@@ -9,9 +9,8 @@ module Opinio
     
       def opinio(*args)
         options = args.extract_options!
-        debugger
 
-        attr_accessible :title if self.column_names.include?("title")
+        attr_accessible :title if Opinio.use_title
         attr_accessible :body
 
         commentable_options = { :polymorphic => true }
@@ -20,7 +19,7 @@ module Opinio
         end
 
         belongs_to :commentable, commentable_options
-        belongs_to :owner, :class_name => options.merge(:belongs_to => :user)[:belongs_to]
+        belongs_to :owner, :class_name => options.reverse_merge(:belongs_to => "User")[:belongs_to]
 
         #TODO: refactor this
         if options[:time]
@@ -29,14 +28,14 @@ module Opinio
           self.comments_interval = options[:time]
         end
 
+        extra_options = {}
         if options[:size]
           type = ( options[:size].is_a?(Range) ? :within : :minimum )
           extra_options = { type => options[:size] }
         end
 
         validates :body,
-                  { :presence => true }
-                  .merge(extra_options)
+                  { :presence => true }.reverse_merge(extra_options)
 
         validates_presence_of :commentable
 

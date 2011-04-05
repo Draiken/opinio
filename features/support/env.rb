@@ -5,6 +5,7 @@
 # files.
 
 ENV["RAILS_ENV"] ||= "test"
+require File.expand_path(File.dirname(__FILE__) + '/../../spec/spec_helper')
 require File.expand_path(File.dirname(__FILE__) + '/../../spec/dummy/config/environment')
 
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
