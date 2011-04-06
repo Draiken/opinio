@@ -2,13 +2,19 @@ source "http://rubygems.org"
 
 gemspec
 
+gem "kaminari"
 gem "rails", "~> 3.0.4"
 gem "sqlite3"
+
+group :development do
+  gem "ruby-debug19"
+end
 
 group :test do
   gem "cucumber"
   gem "cucumber-rails"
   gem "capybara"
+  gem "launchy"
   gem "database_cleaner"
   gem "rspec-rails"
 end

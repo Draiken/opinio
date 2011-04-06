@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :comments
+  resources :comments, :controller => 'opinio/comments', :path => '/comments'
 end

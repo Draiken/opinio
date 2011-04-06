@@ -8,20 +8,25 @@ module Opinio
       end
 
       def resource
-        @resource ||= custom_resouce_identifier(params) || resource_by_params 
+        @resource ||= custom_resource_identifier(params) || resource_by_params 
       end
 
       def resource_by_params
-        params[:commentable_type].constantize.find(params[:commentable_id])
+        if params[:commentable_type]
+          params[:commentable_type].constantize.find(params[:commentable_id])
+        elsif params[:comment]
+          params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+        else
+          raise "Unable to determine comments holder"
+        end
       end
 
       def custom_resource_identifier(params)
-        Opinio.identifiers(params)
-        #yield(params)
+        Opinio.check_custom_identifiers(params)
       end
 
       def resource_name
-        Opinio.name
+        Opinio.model_name
       end
     end
   end

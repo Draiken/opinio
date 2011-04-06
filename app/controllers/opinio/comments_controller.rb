@@ -7,7 +7,7 @@ class Opinio::CommentsController < ApplicationController
 
   def create
     @comment = resource.comments.build(params[:comment])
-    @comment.user = current_user
+    @comment.owner = current_user
     if @comment.save
       flash[:notice] = I18n.translate('opinio.comment.sent', :default => "Comment sent successfully.")
     else
