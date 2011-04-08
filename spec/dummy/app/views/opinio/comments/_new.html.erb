@@ -1,0 +1,16 @@
+<% if current_user %>
+  <h2>Send Comments</h3>
+  <%= form_for Comment.new, :remote => true do |f| %>
+    <p>
+      <%= f.label :body, "Comment" %>
+      <%= f.text_area :body %>
+    </p>
+    <%= hidden_field_tag :commentable_id, commentable.id %>
+    <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
+    <%= f.submit "Send Comment" %>
+  <% end %>
+<% else %>
+  <p>
+    Must be logged in to comment.
+  </p>
+<% end %>
