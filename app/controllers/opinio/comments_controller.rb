@@ -2,7 +2,7 @@ class Opinio::CommentsController < ApplicationController
   include Opinio::Controllers::InternalHelpers
 
   def index
-    resource.comments.page(params[:page])
+    @comments = resource.comments.page(params[:page])
   end
 
   def create
