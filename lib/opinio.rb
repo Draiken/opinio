@@ -5,6 +5,7 @@ module Opinio
   module Controllers
     autoload :Helpers, 'opinio/controllers/helpers'
     autoload :InternalHelpers, 'opinio/controllers/internal_helpers'
+    autoload :Replies, 'opinio/controllers/replies'
   end
 
 
@@ -12,11 +13,20 @@ module Opinio
   mattr_accessor :model_name
   @@model_name = "Comment"
 
+  mattr_accessor :owner_class_name
+  @@owner_class_name = "User"
+
   mattr_accessor :use_title
   @@use_title = false
 
+  mattr_accessor :accept_replies
+  @@accept_replies = false
+
   mattr_accessor :custom_identifiers
   @@custom_identifiers = Array.new
+
+  mattr_accessor :interval_between_comments
+  @@interval_between_comments = false
 
   def self.setup
     yield self

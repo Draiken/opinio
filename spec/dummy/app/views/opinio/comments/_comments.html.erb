@@ -1,7 +1,0 @@
-<ul id="comments">
-  <% unless comments.empty? %>
-    <%= render :partial => 'opinio/comments/comment', :collection => comments %>
-  <% else %>
-    <li><%= t 'opinio.no_comments_found', :default => "No comments found" %></li>
-  <% end %>
-</ul>

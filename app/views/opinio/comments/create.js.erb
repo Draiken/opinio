@@ -1,2 +1,11 @@
 jQuery('#no_comments').fadeOut()
-jQuery('#comments').prepend("<%= escape_javascript( render @comment ) %>")
+<% if @reply %>
+  if(jQuery('#comment_<%= @comment.commentable_id %> ul').length == 0)
+    jQuery('#comment_<%= @comment.commentable_id %>').append('<ul id="comment_<%= @comment.commentable_id %>_replies" class="replies"></ul>')
+  jQuery('#comment_<%= @comment.commentable_id %>_replies').append("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>")
+  jQuery('#commentable_id').val('<%= @comment.commentable.commentable_id %>')
+  jQuery('#commentable_type').val('<%= @comment.commentable.commentable_type %>')
+<% else %>
+  jQuery('#comments').prepend("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>")
+<% end %>
+

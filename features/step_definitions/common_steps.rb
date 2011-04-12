@@ -26,6 +26,12 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field
   end
 end
 
+When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
+  with_scope(selector) do
+    click_link(link)
+  end
+end
+
 When /^press "([^"]*)"$/ do |arg1|
   click_button arg1
 end
