@@ -9,5 +9,4 @@ Feature: Have replies
     When I follow "Reply" within "#comments li:first-child"
     And I fill in "Comment" with "Your comment is useless"
     And press "Send Comment"
-    Then show me the page
     Then I should see "Your comment is useless" within ".replies"
