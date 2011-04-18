@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README.rdoc [Opinio]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Opinio.html">Opinio</a></li>
+				
+					<li><a href="./Opinio/Controllers.html">Opinio::Controllers</a></li>
+				
+					<li><a href="./Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a></li>
+				
+					<li><a href="./Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
+				
+					<li><a href="./Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
+				
+					<li><a href="./Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
+				
+					<li><a href="./Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a></li>
+				
+					<li><a href="./Opinio/Engine.html">Opinio::Engine</a></li>
+				
+					<li><a href="./Opinio/Generators.html">Opinio::Generators</a></li>
+				
+					<li><a href="./Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a></li>
+				
+					<li><a href="./Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a></li>
+				
+					<li><a href="./Opinio/OpinioModel.html">Opinio::OpinioModel</a></li>
+				
+					<li><a href="./Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a></li>
+				
+					<li><a href="./Opinio/OpinioModel/InstanceMethods.html">Opinio::OpinioModel::InstanceMethods</a></li>
+				
+					<li><a href="./Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a></li>
+				
+					<li><a href="./Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a></li>
+				
+					<li><a href="./Opinio/OpinioSubjectum/InstanceMethods.html">Opinio::OpinioSubjectum::InstanceMethods</a></li>
+				
+					<li><a href="./Opinio/Orm.html">Opinio::Orm</a></li>
+				
+					<li><a href="./Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a></li>
+				
+					<li><a href="./Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a></li>
+				
+					<li><a href="./Opinio/Schema.html">Opinio::Schema</a></li>
+				
+					<li><a href="./ActionDispatch.html">ActionDispatch</a></li>
+				
+					<li><a href="./ActionDispatch/Routing.html">ActionDispatch::Routing</a></li>
+				
+					<li><a href="./ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1><a href="Opinio.html">Opinio</a></h1>
+<h2>Description</h2>
+<p>
+<a href="Opinio.html">Opinio</a> is an engine used to add comments
+behaviour to your application. The engine is designed to work only with
+*Rails 3*
+</p>
+<h2>Intallation</h2>
+<p>
+Simply add the following line to your <tt>Gemfile</tt>:
+</p>
+<pre>
+  gem &quot;opinio&quot;, :git =&gt; &quot;git://github.com/Draiken/opinio.git&quot;
+</pre>
+<p>
+and run:
+</p>
+<pre>
+  bundle
+</pre>
+<h2>Usage</h2>
+<p>
+<a href="Opinio.html">Opinio</a> provides generators to facilitate
+it&#8217;s usage. The most common way to quickly get <a
+href="Opinio.html">Opinio</a> working is:
+</p>
+<pre>
+  rails g opinio:install comment
+</pre>
+<p>
+This will generate the <b>Comment</b> model, migration and also generate
+the opinio initializer for customization of the engine.
+</p>
+<p>
+In order to add the comments functionallity to a model, you use the
+<b>opinio_subjectum</b> method
+</p>
+<pre>
+  class Post &lt; ActiveRecord::Base
+    opinio_subjectum
+  end
+</pre>
+<p>
+Now in your view, where the comments will be displayed, you simply add:
+</p>
+<pre>
+  &lt;%= comments_for @post %&gt;
+</pre>
+<p>
+And theere you go, you can now comment in your post.
+</p>
+<h2>Customization</h2>
+<p>
+Of course you will want to customize how the comments are displayed or any
+other customization to the view. To generate the view files on your
+application, run:
+</p>
+<pre>
+  rails g opinio:views
+</pre>
+<p>
+And you can customize all the views used by the engine.
+</p>
+<h2>Contribution</h2>
+<p>
+If you want to help in any way with <b>Opinio</b> please message me or fork
+the project, make the changes and send me a pull request. For issues please
+use the github <a href="https://github.com/Draiken/opinio/issues">issues
+tracker</a>
+</p>
+<p>
+Remember this engine is still in development :)
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

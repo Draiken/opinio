@@ -1,0 +1,18 @@
+Mon, 18 Apr 2011 07:44:58 -0300
+README.rdoc	Mon, 18 Apr 2011 07:43:43 -0300
+lib/generators/opinio/install/install_generator.rb	Fri, 08 Apr 2011 11:56:45 -0300
+lib/generators/opinio/install/templates/migrations/create_model.rb	Fri, 08 Apr 2011 11:33:33 -0300
+lib/generators/opinio/install/templates/models/model.rb	Fri, 08 Apr 2011 11:55:41 -0300
+lib/generators/opinio/views/views_generator.rb	Fri, 08 Apr 2011 13:58:34 -0300
+lib/opinio/controllers/extensions.rb	Wed, 06 Apr 2011 10:28:33 -0300
+lib/opinio/controllers/helpers.rb	Thu, 14 Apr 2011 16:48:53 -0300
+lib/opinio/controllers/internal_helpers.rb	Wed, 06 Apr 2011 10:46:44 -0300
+lib/opinio/controllers/replies.rb	Mon, 11 Apr 2011 14:38:36 -0300
+lib/opinio/opinio_model.rb	Mon, 11 Apr 2011 15:02:01 -0300
+lib/opinio/opinio_subjectum.rb	Wed, 06 Apr 2011 10:38:28 -0300
+lib/opinio/orm/active_record.rb	Fri, 01 Apr 2011 16:44:55 -0300
+lib/opinio/rails/routes.rb	Fri, 08 Apr 2011 14:01:32 -0300
+lib/opinio/rails.rb	Tue, 05 Apr 2011 10:53:55 -0300
+lib/opinio/railtie.rb	Wed, 06 Apr 2011 10:19:10 -0300
+lib/opinio/schema.rb	Tue, 05 Apr 2011 13:25:51 -0300
+lib/opinio.rb	Mon, 11 Apr 2011 14:20:12 -0300

@@ -21,9 +21,9 @@ and run:
 Opinio provides generators to facilitate it's usage.
 The most common way to quickly get Opinio working is:
 
-  rails g opinio:install
+  rails g opinio:install comment
 
-This will generate the *Comment* model and also generate the opinio initializer for customization of the engine.
+This will generate the *Comment* model, migration and also generate the opinio initializer for customization of the engine.
 
 In order to add the comments functionallity to a model, you use the *opinio_subjectum* method
 
@@ -47,7 +47,8 @@ And you can customize all the views used by the engine.
 
 == Contribution
 
-If you want to help in any way with *Opinio* please use the github {issues tracker}[https://github.com/Draiken/opinio/issues]
+If you want to help in any way with *Opinio* please message me or fork the project, make the changes and send me a pull request.
+For issues please use the github {issues tracker}[https://github.com/Draiken/opinio/issues]
 
 Remember this engine is still in development :)
 
