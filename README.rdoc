@@ -16,6 +16,12 @@ and run:
   bundle
 
 
+== Documentation
+
+Rdocs here:
+  http://rubydoc.info/github/Draiken/opinio/master/frames
+
+
 == Usage
 
 Opinio provides generators to facilitate it's usage.
