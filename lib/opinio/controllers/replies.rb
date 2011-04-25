@@ -9,7 +9,8 @@ module Opinio
 
       def reply
         @commentable_type = Opinio.model_name
-        @commentable_id = params[:id]
+        @commentable_id   = params[:id]
+        @commentable      = Opinio.model_name.constantize.find(params[:id])
       end
 
       private

@@ -19,7 +19,7 @@ and run:
 == Documentation
 
 Rdocs here:
-  http://rubydoc.info/github/Draiken/opinio/master/frames
+  {http://rubydoc.info/github/Draiken/opinio/master/frames}[http://rubydoc.info/github/Draiken/opinio/master/frames]
 
 
 == Usage

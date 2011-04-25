@@ -7,10 +7,32 @@ module Opinio
 
     module ClassMethods
     
+      # Adds the Opinio functionallity to the model
+      # You can pass a hash of options to customize the Opinio model
+      #
+      # === Options
+      #
+      # [:belongs_to]
+      #   You can specify the class that owns the comments on
+      #   +config/initializers/opinio.rb+
+      #   but you can also pass it explicitly here:
+      #   eg. <tt>:belongs_to => "Admin"</tt>
+      # [:counter_cache]
+      #   Customize the counter cache here, defaults to false
+      # [:body_length]
+      #   You can pass a <tt>Range</tt> to determine the size of the body that will be
+      #   validated
+      # [:title_length]
+      #   If you are using titles in your opinio model (set on the
+      #   initializer) you can pass a <tt>Range</tt> so it is validated.
       def opinio(*args)
         options = args.extract_options!
 
-        attr_accessible :title if Opinio.use_title
+        if Opinio.use_title
+          attr_accessible :title 
+          validates       :title,
+                          {}.merge( :length => options[:title_length] )
+        end
         attr_accessible :body
 
         commentable_options = { :polymorphic => true }
@@ -29,9 +51,8 @@ module Opinio
         end
 
         extra_options = {}
-        if options[:size]
-          type = ( options[:size].is_a?(Range) ? :within : :minimum )
-          extra_options = { type => options[:size] }
+        if options[:body_length]
+          extra_options = { :length => options[:body_length] }
         end
 
         validates :body,
@@ -55,6 +76,8 @@ module Opinio
 
       private
 
+      # Checks the time of the last comment
+      # made by the same owner
       def last_comment_time
         last_comment = Comment.owned_by(self.owner).order('created_at DESC').last
         if last_comment
@@ -74,10 +97,11 @@ module Opinio
         end
       end
 
+      # Validates that you cannot comment on a comment's comment
       def cannot_be_comment_of_a_comments_comment
         if new_record? && self.commentable_type == Opinio.model_name
           if commentable.commentable_type == Opinio.model_name
-            errors.add :base, I18n.translate('opinio.cannot_be_comment_of_comment', :default => 'Cannot reply another comment reply')
+            errors.add :base, I18n.translate('opinio.cannot_be_comment_of_comment', :default => 'Cannot reply another comment\'s reply')
           end
         end
       end
