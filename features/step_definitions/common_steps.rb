@@ -11,7 +11,7 @@ When /^I visit a page with comments$/ do
   post.save
   u = User.new :name => "Tester2"
   assert u.save
-  5.times do |n|
+  20.times do |n|
     c = Comment.new :body => "comment number #{n}"
     c.owner = u
     c.commentable = post

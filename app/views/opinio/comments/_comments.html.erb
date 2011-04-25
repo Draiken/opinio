@@ -1,3 +1,7 @@
+<div>
+  <%= paginate comments %>
+</div>
+
 <ul id="comments">
   <% unless comments.empty? %>
     <%= render :partial => 'opinio/comments/comment', :collection => comments %>
@@ -5,3 +9,7 @@
     <li id="no_comments"><%= t 'opinio.no_comments_found', :default => "No comments found" %></li>
   <% end %>
 </ul>
+
+<div>
+  <%= paginate comments %>
+</div>

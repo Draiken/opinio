@@ -4,7 +4,7 @@ module ActionDispatch::Routing
       route_name = args.first || Opinio.model_name.pluralize.downcase
       options = args.extract_options!
 
-      get route_name => "opinio/comments#index", :on => :member
+      get "#{ route_name }(/:page)" => "opinio/comments#index", :on => :member
     end
 
   end
