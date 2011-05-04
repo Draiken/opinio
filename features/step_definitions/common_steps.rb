@@ -5,7 +5,6 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-
 When /^I visit a page with comments$/ do
   post = Post.new(:title => "A post", :body => "A post's body")
   post.save

@@ -1,6 +1,7 @@
 Dummy::Application.routes.draw do
 
   resources :users
+  get 'set_current_user/:id' => 'application#set_current_user', :as => :set_current_user
 
   resources :posts do
     opinio 'comments'

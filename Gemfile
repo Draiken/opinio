@@ -5,6 +5,7 @@ gemspec
 gem "kaminari"
 gem "rails", "~> 3.0.4"
 gem "sqlite3"
+gem "jquery-rails"
 
 group :development do
   gem "ruby-debug19"

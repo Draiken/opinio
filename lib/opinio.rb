@@ -8,8 +8,6 @@ module Opinio
     autoload :Replies, 'opinio/controllers/replies'
   end
 
-
-
   mattr_accessor :model_name
   @@model_name = "Comment"
 

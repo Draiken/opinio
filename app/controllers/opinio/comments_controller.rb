@@ -16,5 +16,16 @@ class Opinio::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Opinio.model_name.constantize.find(params[:id])
+
+    if @comment.owner == current_user
+      @comment.destroy
+      flash[:notice] = I18n.translate('opinio.comment.destroyed', :default => "Comment removed successfully")
+    else
+      flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
+    end
+  end
+
   
 end

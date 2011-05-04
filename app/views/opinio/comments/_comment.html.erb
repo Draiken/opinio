@@ -4,6 +4,7 @@
   <p>
     <%= comment.body %>
   </p>
+  <%= link_to 'Destroy', comment_path(comment), :method => :delete, :remote => true %>
   <%# this enables only 1 level of replies %>
   <% if Opinio.accept_replies && !reply %>
     <span><%= link_to t("opinio.reply", :default => "Reply"), reply_comment_path(comment), :remote => true %></span>

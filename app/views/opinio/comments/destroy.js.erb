@@ -1,0 +1,3 @@
+jQuery('#comment_<%= @comment.id %>').remove();
+jQuery('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
+jQuery('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
