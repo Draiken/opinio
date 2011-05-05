@@ -29,4 +29,19 @@ describe Opinio do
     end
     Opinio.model_name.should == "Opinion"
   end
+
+  it "Should accept custom destroy conditions for the opinio model" do
+    @user = User.new
+    Opinio.set_destroy_conditions do |comment|
+      comment.owner == @user
+    end
+    comment = Comment.new
+    comment.owner = @user
+
+    comment_owned_by_someone_else = Comment.new
+    comment_owned_by_someone_else.owner = User.new
+
+    Opinio.destroy_opinio?(comment).should be_true
+    Opinio.destroy_opinio?(comment_owned_by_someone_else).should be_false
+  end
 end

@@ -26,12 +26,24 @@ module Opinio
   mattr_accessor :interval_between_comments
   @@interval_between_comments = false
 
+  mattr_accessor :destroy_conditions
+  @@destroy_conditions = nil
+
   def self.setup
     yield self
   end
 
   def self.opinio_identifier(block)
-    self.custom_identifiers << block
+    @@custom_identifiers << block
+  end
+
+  def self.set_destroy_conditions(&block)
+    @@destroy_conditions = block
+  end
+
+  def self.destroy_opinio?(opinio)
+    return true if @@destroy_conditions.nil?
+    @@destroy_conditions.call(opinio)
   end
 
   def self.check_custom_identifiers(params)
