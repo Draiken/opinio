@@ -23,7 +23,9 @@ class Opinio::CommentsController < ApplicationController
       @comment.destroy
       flash[:notice] = I18n.translate('opinio.comment.destroyed', :default => "Comment removed successfully")
     else
-      flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
+      #flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
+      logger.warning "user #{current_user.email} tried to remove a comment from another user #{@comment.owner.email}"
+      render :text => "unauthorized", :status => 401
     end
   end
 
