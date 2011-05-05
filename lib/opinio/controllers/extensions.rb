@@ -4,8 +4,10 @@ module Opinio
       extend ActiveSupport::Concern
 
       included do
-        define_method "#{Opinio.model_name.underscore}_destroy_conditions" do |&block|
-          Opinio.set_destroy_conditions( &block )
+        (class << self; self; end).instance_eval do
+          define_method "#{Opinio.model_name.underscore}_destroy_conditions" do |&block|
+            Opinio.set_destroy_conditions( &block )
+          end
         end
       end
 
