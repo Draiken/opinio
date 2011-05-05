@@ -16,6 +16,12 @@ module Opinio
           Opinio.opinio_identifier(block)
         end
       end
+
+      module InstanceMethods
+        def can_destroy_opinio?(opinio)
+          self.instance_exec(opinio, &Opinio.destroy_conditions)
+        end
+      end
     end
   end
 end

@@ -27,7 +27,7 @@ module Opinio
   @@interval_between_comments = false
 
   mattr_accessor :destroy_conditions
-  @@destroy_conditions = nil
+  @@destroy_conditions = Proc.new { true }
 
   def self.setup
     yield self
@@ -39,11 +39,6 @@ module Opinio
 
   def self.set_destroy_conditions(&block)
     @@destroy_conditions = block
-  end
-
-  def self.destroy_opinio?(opinio)
-    return true if @@destroy_conditions.nil?
-    @@destroy_conditions.call(opinio)
   end
 
   def self.check_custom_identifiers(params)
