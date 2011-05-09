@@ -1,4 +1,4 @@
-= Opinio
+= Opini*
 
 == Description
 
@@ -7,7 +7,7 @@ The engine is designed to work only with *Rails 3*
 
 == Intallation
 
-Simply add the following line to your +Gemfile+:
+Simply add the following line to your *Gemfile*:
 
   gem "opinio", :git => "git://github.com/Draiken/opinio.git"
 
@@ -58,16 +58,16 @@ And you can customize all the views used by the engine.
 ==== Pretty Urls
 
 Often times you will want the engine to show the index of comments for a specific item
-without having to pass +:commentable_type+ or +:commentable_id+.
+without having to pass *:commentable_type* or *:commentable_id*.
 
-In order to do that, opinio provides a method to +ActionController::Base+:
+In order to do that, opinio provides a method to *ActionController::Base*:
 
   opinio_identifier do |params|
     return Review.find(params[:review_id]) if params[:review_id]
     return Product.find(params[:product_id]) if params[:product_id]
   end
 
-Basically on this method you receive the +params+ variable and you tell the engine, who owns
+Basically on this method you receive the *params* variable and you tell the engine, who owns
 the comments from that page.
 This allows you to use routes like:
 
@@ -75,7 +75,7 @@ This allows you to use routes like:
   /products/1/reviews/1/comments
 
 Without passing those 2 parameters.
-I suggest you put this method on the +ApplicationController+
+I suggest you put this method on the *ApplicationController*
 
 ==== Customize destroy conditions
 
@@ -89,7 +89,7 @@ it would be like this:
   end
 
 This would make users only be able to remove their own comments.
-Another example would be using the +CanCan+:
+Another example would be using the *CanCan*:
 
   comment_destroy_conditions do |comment|
     authorize :destroy, comment
