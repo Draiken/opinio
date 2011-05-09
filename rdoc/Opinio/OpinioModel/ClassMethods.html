@@ -108,6 +108,8 @@
 				
 					<li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
 				
+					<li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
+				
 					<li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
 					<li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
@@ -188,56 +190,86 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Adds the <a href="../../Opinio.html">Opinio</a> functionallity to the model
+You can pass a hash of options to customize the <a
+href="../../Opinio.html">Opinio</a> model
+</p>
+<h3>Options</h3>
+<dl>
+<dt>:belongs_to</dt><dd><p>
+You can specify the class that owns the comments on
+<tt>config/initializers/opinio.rb</tt> but you can also pass it explicitly
+here: eg. <tt>:belongs_to =&gt; &quot;Admin&quot;</tt>
+</p>
+</dd>
+<dt>:counter_cache</dt><dd><p>
+Customize the counter cache here, defaults to false
+</p>
+</dd>
+<dt>:body_length</dt><dd><p>
+You can pass a <tt>Range</tt> to determine the size of the body that will
+be validated
+</p>
+</dd>
+<dt>:title_length</dt><dd><p>
+If you are using titles in your opinio model (set on the initializer) you
+can pass a <tt>Range</tt> so it is validated.
+</p>
+</dd>
+</dl>
 					
 
 					
 					<div class="method-source-code"
 						id="opinio-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 10</span>
-10:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">opinio</span>(*<span class="ruby-identifier">args</span>)
-11:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
-12: 
-13:         <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:title</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">use_title</span>
-14:         <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:body</span>
-15: 
-16:         <span class="ruby-identifier">commentable_options</span> = { <span class="ruby-value">:polymorphic</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }
-17:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>]
-18:           <span class="ruby-identifier">commentable_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:counter_cache</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>])
-19:         <span class="ruby-keyword kw">end</span>
-20: 
-21:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:commentable</span>, <span class="ruby-identifier">commentable_options</span>
-22:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:owner</span>, <span class="ruby-value">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:belongs_to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">owner_class_name</span>)[<span class="ruby-value">:belongs_to</span>]
-23: 
-24:         <span class="ruby-comment cmt">#TODO: refactor this</span>
-25:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>
-26:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:last_comment_time</span>, <span class="ruby-value">:if</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:new_record?</span>
-27:           <span class="ruby-identifier">cattr_accessor</span> <span class="ruby-value">:comments_interval</span>
-28:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>)[<span class="ruby-value">:time</span>]
-29:         <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 28</span>
+28:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">opinio</span>(*<span class="ruby-identifier">args</span>)
+29:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
 30: 
-31:         <span class="ruby-identifier">extra_options</span> = {}
-32:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:size</span>]
-33:           <span class="ruby-identifier">type</span> = ( <span class="ruby-identifier">options</span>[<span class="ruby-value">:size</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Range</span>) <span class="ruby-operator">?</span> <span class="ruby-value">:within</span> <span class="ruby-operator">:</span> <span class="ruby-value">:minimum</span> )
-34:           <span class="ruby-identifier">extra_options</span> = { <span class="ruby-identifier">type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:size</span>] }
+31:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">use_title</span>
+32:           <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:title</span> 
+33:           <span class="ruby-identifier">validates</span>       <span class="ruby-value">:title</span>,
+34:                           {}.<span class="ruby-identifier">merge</span>( <span class="ruby-value">:length</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:title_length</span>] )
 35:         <span class="ruby-keyword kw">end</span>
-36: 
-37:         <span class="ruby-identifier">validates</span> <span class="ruby-value">:body</span>,
-38:                   { <span class="ruby-value">:presence</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">extra_options</span>)
-39: 
-40:         <span class="ruby-identifier">validates_presence_of</span> <span class="ruby-value">:commentable</span>
-41: 
-42:         <span class="ruby-identifier">scope</span> <span class="ruby-value">:owned_by</span>, <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">owner</span><span class="ruby-operator">|</span> <span class="ruby-identifier">where</span>(<span class="ruby-value str">'owner_id = ?'</span>, <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">id</span>) }
-43: 
-44:         <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Opinio</span><span class="ruby-operator">::</span><span class="ruby-constant">OpinioModel</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>
+36:         <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:body</span>
+37: 
+38:         <span class="ruby-identifier">commentable_options</span> = { <span class="ruby-value">:polymorphic</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }
+39:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>]
+40:           <span class="ruby-identifier">commentable_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:counter_cache</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>])
+41:         <span class="ruby-keyword kw">end</span>
+42: 
+43:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:commentable</span>, <span class="ruby-identifier">commentable_options</span>
+44:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:owner</span>, <span class="ruby-value">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:belongs_to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">owner_class_name</span>)[<span class="ruby-value">:belongs_to</span>]
 45: 
-46:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">accept_replies</span>
-47:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:cannot_be_comment_of_a_comments_comment</span>
-48:           <span class="ruby-identifier">opinio_subjectum</span> <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'created_at ASC'</span>
-49:         <span class="ruby-keyword kw">end</span>
-50: 
-51:       <span class="ruby-keyword kw">end</span></pre>
+46:         <span class="ruby-comment cmt">#TODO: refactor this</span>
+47:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>
+48:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:last_comment_time</span>, <span class="ruby-value">:if</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:new_record?</span>
+49:           <span class="ruby-identifier">cattr_accessor</span> <span class="ruby-value">:comments_interval</span>
+50:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>)[<span class="ruby-value">:time</span>]
+51:         <span class="ruby-keyword kw">end</span>
+52: 
+53:         <span class="ruby-identifier">extra_options</span> = {}
+54:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:body_length</span>]
+55:           <span class="ruby-identifier">extra_options</span> = { <span class="ruby-value">:length</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:body_length</span>] }
+56:         <span class="ruby-keyword kw">end</span>
+57: 
+58:         <span class="ruby-identifier">validates</span> <span class="ruby-value">:body</span>,
+59:                   { <span class="ruby-value">:presence</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">extra_options</span>)
+60: 
+61:         <span class="ruby-identifier">validates_presence_of</span> <span class="ruby-value">:commentable</span>
+62: 
+63:         <span class="ruby-identifier">scope</span> <span class="ruby-value">:owned_by</span>, <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">owner</span><span class="ruby-operator">|</span> <span class="ruby-identifier">where</span>(<span class="ruby-value str">'owner_id = ?'</span>, <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">id</span>) }
+64: 
+65:         <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Opinio</span><span class="ruby-operator">::</span><span class="ruby-constant">OpinioModel</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>
+66: 
+67:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">accept_replies</span>
+68:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:cannot_be_comment_of_a_comments_comment</span>
+69:           <span class="ruby-identifier">opinio_subjectum</span> <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'created_at ASC'</span>
+70:         <span class="ruby-keyword kw">end</span>
+71: 
+72:       <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -110,6 +110,8 @@
 				
 					<li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
 				
+					<li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
+				
 					<li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
 					<li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
@@ -200,8 +202,9 @@
     <span class="ruby-comment cmt"># File lib/opinio/controllers/replies.rb, line 10</span>
 10:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reply</span>
 11:         <span class="ruby-ivar">@commentable_type</span> = <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
-12:         <span class="ruby-ivar">@commentable_id</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
-13:       <span class="ruby-keyword kw">end</span></pre>
+12:         <span class="ruby-ivar">@commentable_id</span>   = <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]
+13:         <span class="ruby-ivar">@commentable</span>      = <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>.<span class="ruby-identifier">constantize</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+14:       <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -238,10 +241,10 @@
 					<div class="method-source-code"
 						id="check-reply-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio/controllers/replies.rb, line 17</span>
-17:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_reply</span>
-18:         <span class="ruby-ivar">@reply</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:commentable_type</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
-19:       <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/opinio/controllers/replies.rb, line 18</span>
+18:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_reply</span>
+19:         <span class="ruby-ivar">@reply</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:commentable_type</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
+20:       <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

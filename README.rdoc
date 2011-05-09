@@ -15,11 +15,10 @@ and run:
 
   bundle
 
-
 == Documentation
 
 Rdocs here:
-  {http://rubydoc.info/github/Draiken/opinio/master/frames}[http://rubydoc.info/github/Draiken/opinio/master/frames]
+  http://rubydoc.info/github/Draiken/opinio/master/frames
 
 
 == Usage
@@ -42,14 +41,62 @@ Now in your view, where the comments will be displayed, you simply add:
   <%= comments_for @post %>
 
 And theere you go, you can now comment in your post.
+Aditional options can be found on the {RDocs}[http://rubydoc.info/github/Draiken/opinio/master/frames]
 
 == Customization
+
+=== Views
 
 Of course you will want to customize how the comments are displayed or any other customization to the view. To generate the view files on your application, run:
 
   rails g opinio:views
 
 And you can customize all the views used by the engine.
+
+=== Behaviour
+
+==== Pretty Urls
+
+Often times you will want the engine to show the index of comments for a specific item
+without having to pass +:commentable_type+ or +:commentable_id+.
+
+In order to do that, opinio provides a method to +ActionController::Base+:
+
+  opinio_identifier do |params|
+    return Review.find(params[:review_id]) if params[:review_id]
+    return Product.find(params[:product_id]) if params[:product_id]
+  end
+
+Basically on this method you receive the +params+ variable and you tell the engine, who owns
+the comments from that page.
+This allows you to use routes like:
+
+  /products/1/comments
+  /products/1/reviews/1/comments
+
+Without passing those 2 parameters.
+I suggest you put this method on the +ApplicationController+
+
+==== Customize destroy conditions
+
+By default, anyone can destroy any comment in the engine. We don't want that.
+To setup a custom destroy condition we can use the methods provided by opinio
+in our controllers. For instance, if our opinio model is called 'comment' 
+it would be like this:
+
+  comment_destroy_conditions do |comment|
+    comment.owner == current_user
+  end
+
+This would make users only be able to remove their own comments.
+Another example would be using the +CanCan+:
+
+  comment_destroy_conditions do |comment|
+    authorize :destroy, comment
+  end
+
+You get the picture, you're inside your controller's methods on that block
+so you can call anything your normal controllers call on actions.
 
 == Contribution
 
@@ -58,4 +105,12 @@ For issues please use the github {issues tracker}[https://github.com/Draiken/opi
 
 Remember this engine is still in development :)
 
+=== TODO
 
+  * Haml views
+  * Better controller overriding (coding and documentation)
+  * Support for deeper levels of replies
+  * Add tons of rspecs for
+    * controllers
+    * routes
+    * models

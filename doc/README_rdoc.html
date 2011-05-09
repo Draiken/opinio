@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README.rdoc [RDoc Documentation]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1>Opinio</h1>
+<h2>Description</h2>
+<p>
+Opinio is an engine used to add comments behaviour to your application. The
+engine is designed to work only with *Rails 3*
+</p>
+<h2>Intallation</h2>
+<p>
+Simply add the following line to your <tt>Gemfile</tt>:
+</p>
+<pre>
+  gem &quot;opinio&quot;, :git =&gt; &quot;git://github.com/Draiken/opinio.git&quot;
+</pre>
+<p>
+and run:
+</p>
+<pre>
+  bundle
+</pre>
+<h2>Documentation</h2>
+<p>
+Rdocs here:
+</p>
+<pre>
+  {http://rubydoc.info/github/Draiken/opinio/master/frames}[http://rubydoc.info/github/Draiken/opinio/master/frames]
+</pre>
+<h2>Usage</h2>
+<p>
+Opinio provides generators to facilitate it&#8217;s usage. The most common
+way to quickly get Opinio working is:
+</p>
+<pre>
+  rails g opinio:install comment
+</pre>
+<p>
+This will generate the <b>Comment</b> model, migration and also generate
+the opinio initializer for customization of the engine.
+</p>
+<p>
+In order to add the comments functionallity to a model, you use the
+<b>opinio_subjectum</b> method
+</p>
+<pre>
+  class Post &lt; ActiveRecord::Base
+    opinio_subjectum
+  end
+</pre>
+<p>
+Now in your view, where the comments will be displayed, you simply add:
+</p>
+<pre>
+  &lt;%= comments_for @post %&gt;
+</pre>
+<p>
+And theere you go, you can now comment in your post. Aditional options can
+be found on the <a
+href="http://rubydoc.info/github/Draiken/opinio/master/frames">RDocs</a>
+</p>
+<h2>Customization</h2>
+<h3>Views</h3>
+<p>
+Of course you will want to customize how the comments are displayed or any
+other customization to the view. To generate the view files on your
+application, run:
+</p>
+<pre>
+  rails g opinio:views
+</pre>
+<p>
+And you can customize all the views used by the engine.
+</p>
+<h3>Behaviour</h3>
+<h4>Pretty Urls</h4>
+<p>
+Often times you will want the engine to show the index of comments for a
+specific item without having to pass `:commentable_type` or
+`:commentable_id`.
+</p>
+<p>
+In order to do that, opinio provides a method to `ActionController::Base`:
+</p>
+<pre>
+  opinio_identifier do |params|
+    return Review.find(params[:review_id]) if params[:review_id]
+    return Product.find(params[:product_id]) if params[:product_id]
+  end
+</pre>
+<p>
+Basically on this method you receive the `params` variable and you tell the
+engine, who owns the comments from that page. This allows you to use routes
+like:
+</p>
+<pre>
+  /products/1/comments
+  /products/1/reviews/1/comments
+</pre>
+<p>
+Without passing those 2 parameters. I suggest you put this method on the
+`ApplicationController`
+</p>
+<h4>Customize destroy conditions</h4>
+<p>
+By default, anyone can destroy any comment in the engine. We don&#8217;t
+want that. To setup a custom destroy condition we can use the methods
+provided by opinio in our controllers. For instance, if our opinio model is
+called &#8216;comment&#8217;  it would be like this:
+</p>
+<pre>
+  comment_destroy_conditions do |comment|
+    comment.owner == current_user
+  end
+</pre>
+<p>
+This would make users only be able to remove their own comments. Another
+example would be using the `CanCan`:
+</p>
+<pre>
+  comment_destroy_conditions do |comment|
+    authorize :destroy, comment
+  end
+</pre>
+<p>
+You get the picture, you&#8217;re inside your controller&#8217;s methods on
+that block so you can call anything your normal controllers call on
+actions.
+</p>
+<h2>Contribution</h2>
+<p>
+If you want to help in any way with <b>Opinio</b> please message me or fork
+the project, make the changes and send me a pull request. For issues please
+use the github <a href="https://github.com/Draiken/opinio/issues">issues
+tracker</a>
+</p>
+<p>
+Remember this engine is still in development :)
+</p>
+<h3>TODO</h3>
+<pre>
+  * Haml views
+  * Better controller overriding (coding and documentation)
+  * Support for deeper levels of replies
+  * Add tons of rspecs for
+    * controllers
+    * routes
+    * models</pre>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

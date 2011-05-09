@@ -110,6 +110,8 @@
 				
 					<li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
 				
+					<li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
+				
 					<li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
 					<li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
@@ -190,21 +192,23 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Validates that you cannot comment on a comment&#8217;s comment
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="cannot-be-comment-of-a-comments-comment-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 77</span>
-77:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cannot_be_comment_of_a_comments_comment</span>
-78:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new_record?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">commentable_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
-79:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">commentable</span>.<span class="ruby-identifier">commentable_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
-80:             <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span>(<span class="ruby-value str">'opinio.cannot_be_comment_of_comment'</span>, <span class="ruby-value">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Cannot reply another comment reply'</span>)
-81:           <span class="ruby-keyword kw">end</span>
-82:         <span class="ruby-keyword kw">end</span>
-83:       <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 101</span>
+101:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cannot_be_comment_of_a_comments_comment</span>
+102:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new_record?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">commentable_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
+103:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">commentable</span>.<span class="ruby-identifier">commentable_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>
+104:             <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span>(<span class="ruby-value str">'opinio.cannot_be_comment_of_comment'</span>, <span class="ruby-value">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Cannot reply another comment\s reply'</span>)
+105:           <span class="ruby-keyword kw">end</span>
+106:         <span class="ruby-keyword kw">end</span>
+107:       <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -228,32 +232,34 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Checks the time of the last comment made by the same owner
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="last-comment-time-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 58</span>
-58:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_comment_time</span>
-59:         <span class="ruby-identifier">last_comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">owned_by</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">owner</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value str">'created_at DESC'</span>).<span class="ruby-identifier">last</span>
-60:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">last_comment</span>
-61:           <span class="ruby-keyword kw">if</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">last_comment</span>.<span class="ruby-identifier">created_at</span>).<span class="ruby-identifier">round</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span>
-62:             <span class="ruby-keyword kw">true</span>
-63:           <span class="ruby-keyword kw">else</span>
-64:             <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(
-65:               <span class="ruby-value">:created_at</span>,
-66:               <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'opinio.comment_interval'</span>,
-67:                      <span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span>,
-68:                      <span class="ruby-value">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;You must wait %{time} seconds to comment again.&quot;</span>)
-69:             )
-70:             <span class="ruby-keyword kw">false</span>
-71:           <span class="ruby-keyword kw">end</span>
-72:         <span class="ruby-keyword kw">else</span>
-73:           <span class="ruby-keyword kw">true</span>
-74:         <span class="ruby-keyword kw">end</span>
-75:       <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 81</span>
+81:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">last_comment_time</span>
+82:         <span class="ruby-identifier">last_comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">owned_by</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">owner</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value str">'created_at DESC'</span>).<span class="ruby-identifier">last</span>
+83:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">last_comment</span>
+84:           <span class="ruby-keyword kw">if</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">last_comment</span>.<span class="ruby-identifier">created_at</span>).<span class="ruby-identifier">round</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span>
+85:             <span class="ruby-keyword kw">true</span>
+86:           <span class="ruby-keyword kw">else</span>
+87:             <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(
+88:               <span class="ruby-value">:created_at</span>,
+89:               <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">t</span>(<span class="ruby-value str">'opinio.comment_interval'</span>,
+90:                      <span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span>,
+91:                      <span class="ruby-value">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;You must wait %{time} seconds to comment again.&quot;</span>)
+92:             )
+93:             <span class="ruby-keyword kw">false</span>
+94:           <span class="ruby-keyword kw">end</span>
+95:         <span class="ruby-keyword kw">else</span>
+96:           <span class="ruby-keyword kw">true</span>
+97:         <span class="ruby-keyword kw">end</span>
+98:       <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

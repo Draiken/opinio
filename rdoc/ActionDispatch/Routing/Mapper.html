@@ -115,6 +115,8 @@
 				
 					<li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
 				
+					<li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
+				
 					<li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
 					<li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
@@ -207,7 +209,7 @@
 4:       <span class="ruby-identifier">route_name</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>.<span class="ruby-identifier">pluralize</span>.<span class="ruby-identifier">downcase</span>
 5:       <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
 6: 
-7:       <span class="ruby-identifier">get</span> <span class="ruby-identifier">route_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;opinio/comments#index&quot;</span>, <span class="ruby-value">:on</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:member</span>
+7:       <span class="ruby-identifier">get</span> <span class="ruby-node">&quot;#{ route_name }(/:page)&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;opinio/comments#index&quot;</span>, <span class="ruby-value">:on</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:member</span>
 8:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					

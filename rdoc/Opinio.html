@@ -125,6 +125,8 @@
 					
 					<li><a href="#method-c-opinio_identifier">::opinio_identifier</a></li>
 					
+					<li><a href="#method-c-set_destroy_conditions">::set_destroy_conditions</a></li>
+					
 					<li><a href="#method-c-setup">::setup</a></li>
 					
 				</ul>
@@ -170,6 +172,8 @@
 					<li><a href="./Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a></li>
 				
 					<li><a href="./Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
+				
+					<li><a href="./Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
 				
 					<li><a href="./Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
@@ -258,14 +262,14 @@
 					<div class="method-source-code"
 						id="check-custom-identifiers-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio.rb, line 39</span>
-39:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">check_custom_identifiers</span>(<span class="ruby-identifier">params</span>)
-40:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">custom_identifiers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">idf</span><span class="ruby-operator">|</span>
-41:       <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">idf</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">params</span>)
-42:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ret</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">nil?</span>
-43:     <span class="ruby-keyword kw">end</span>
-44:     <span class="ruby-keyword kw">nil</span>
-45:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/opinio.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">check_custom_identifiers</span>(<span class="ruby-identifier">params</span>)
+45:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">custom_identifiers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">idf</span><span class="ruby-operator">|</span>
+46:       <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">idf</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">params</span>)
+47:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ret</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">ret</span>.<span class="ruby-identifier">nil?</span>
+48:     <span class="ruby-keyword kw">end</span>
+49:     <span class="ruby-keyword kw">nil</span>
+50:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -296,10 +300,44 @@
 					<div class="method-source-code"
 						id="opinio-identifier-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio.rb, line 35</span>
-35:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">opinio_identifier</span>(<span class="ruby-identifier">block</span>)
-36:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">custom_identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
-37:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/opinio.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">opinio_identifier</span>(<span class="ruby-identifier">block</span>)
+37:     <span class="ruby-identifier">@@custom_identifiers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span>
+38:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="set-destroy-conditions-method" class="method-detail ">
+				<a name="method-c-set_destroy_conditions"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">set_destroy_conditions</span><span
+						class="method-args">(&block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="set-destroy-conditions-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/opinio.rb, line 40</span>
+40:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_destroy_conditions</span>(&amp;<span class="ruby-identifier">block</span>)
+41:     <span class="ruby-identifier">@@destroy_conditions</span> = <span class="ruby-identifier">block</span>
+42:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -330,10 +368,10 @@
 					<div class="method-source-code"
 						id="setup-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/opinio.rb, line 31</span>
-31:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">setup</span>
-32:     <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
-33:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/opinio.rb, line 32</span>
+32:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">setup</span>
+33:     <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span>
+34:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

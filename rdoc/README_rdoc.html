@@ -68,6 +68,8 @@
 				
 					<li><a href="./Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
 				
+					<li><a href="./Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
+				
 					<li><a href="./Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
 				
 					<li><a href="./Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
@@ -137,6 +139,13 @@ and run:
 <pre>
   bundle
 </pre>
+<h2>Documentation</h2>
+<p>
+Rdocs here:
+</p>
+<pre>
+  {http://rubydoc.info/github/Draiken/opinio/master/frames}[http://rubydoc.info/github/Draiken/opinio/master/frames]
+</pre>
 <h2>Usage</h2>
 <p>
 <a href="Opinio.html">Opinio</a> provides generators to facilitate
@@ -166,9 +175,12 @@ Now in your view, where the comments will be displayed, you simply add:
   &lt;%= comments_for @post %&gt;
 </pre>
 <p>
-And theere you go, you can now comment in your post.
+And theere you go, you can now comment in your post. Aditional options can
+be found on the <a
+href="http://rubydoc.info/github/Draiken/opinio/master/frames">RDocs</a>
 </p>
 <h2>Customization</h2>
+<h3>Views</h3>
 <p>
 Of course you will want to customize how the comments are displayed or any
 other customization to the view. To generate the view files on your
@@ -180,6 +192,61 @@ application, run:
 <p>
 And you can customize all the views used by the engine.
 </p>
+<h3>Behaviour</h3>
+<h4>Pretty Urls</h4>
+<p>
+Often times you will want the engine to show the index of comments for a
+specific item without having to pass `:commentable_type` or
+`:commentable_id`.
+</p>
+<p>
+In order to do that, opinio provides a method to `ActionController::Base`:
+</p>
+<pre>
+  opinio_identifier do |params|
+    return Review.find(params[:review_id]) if params[:review_id]
+    return Product.find(params[:product_id]) if params[:product_id]
+  end
+</pre>
+<p>
+Basically on this method you receive the `params` variable and you tell the
+engine, who owns the comments from that page. This allows you to use routes
+like:
+</p>
+<pre>
+  /products/1/comments
+  /products/1/reviews/1/comments
+</pre>
+<p>
+Without passing those 2 parameters. I suggest you put this method on the
+`ApplicationController`
+</p>
+<h4>Customize destroy conditions</h4>
+<p>
+By default, anyone can destroy any comment in the engine. We don&#8217;t
+want that. To setup a custom destroy condition we can use the methods
+provided by opinio in our controllers. For instance, if our opinio model is
+called &#8216;comment&#8217;  it would be like this:
+</p>
+<pre>
+  comment_destroy_conditions do |comment|
+    comment.owner == current_user
+  end
+</pre>
+<p>
+This would make users only be able to remove their own comments. Another
+example would be using the `CanCan`:
+</p>
+<pre>
+  comment_destroy_conditions do |comment|
+    authorize :destroy, comment
+  end
+</pre>
+<p>
+You get the picture, you&#8217;re inside your controller&#8217;s methods on
+that block so you can call anything your normal controllers call on
+actions.
+</p>
 <h2>Contribution</h2>
 <p>
 If you want to help in any way with <b>Opinio</b> please message me or fork
@@ -190,6 +257,15 @@ tracker</a>
 <p>
 Remember this engine is still in development :)
 </p>
+<h3>TODO</h3>
+<pre>
+  * Haml views
+  * Better controller overriding (coding and documentation)
+  * Support for deeper levels of replies
+  * Add tons of rspecs for
+    * controllers
+    * routes
+    * models</pre>
 
 	</div>
 
