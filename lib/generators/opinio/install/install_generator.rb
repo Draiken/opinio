@@ -18,6 +18,10 @@ module Opinio
         template "initializers/opinio.erb", "config/initializers/opinio.rb"
       end
 
+      def generate_route
+        route "opinio_model"
+      end
+
       def self.next_migration_number(dirname)
         if ActiveRecord::Base.timestamped_migrations
           Time.now.utc.strftime("%Y%m%d%H%M%S")

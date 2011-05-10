@@ -6,12 +6,11 @@ Feature: Have comments on something
 
   Scenario: See comments
     Given I visit a page with comments
-    Then I should see "comment number 3" within "#comments"
+    Then I should see "comment number" within "#comments"
 
   @focus
   Scenario: Test Pagination
     Given I visit a page with comments
-    Then show me the page
     When I follow "2"
     Then I should see "comment number 13" within "#comments"
 
