@@ -3,8 +3,9 @@ module ActionDispatch::Routing
     def opinio(*args)
       route_name    = args.first || Opinio.model_name.pluralize.downcase
       options       = args.extract_options!.symbolize_keys
+      options[:controller] ||= 'opinio/comments'
 
-      get "#{ route_name }(/:page)" => "opinio/comments#index" 
+      get "#{ route_name }(/:page)" => "#{options[:controller]}#index", :as => :comments 
     end
 
     def opinio_model(*args)
