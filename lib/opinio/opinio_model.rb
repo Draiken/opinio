@@ -26,6 +26,7 @@ module Opinio
       #   If you are using titles in your opinio model (set on the
       #   initializer) you can pass a <tt>Range</tt> so it is validated.
       def opinio(*args)
+        return if self.included_modules.include?(Opinio::OpinioModel::InstanceMethods)
         options = args.extract_options!
 
         if Opinio.use_title
