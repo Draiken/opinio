@@ -37,7 +37,7 @@ module Opinio
 
         commentable_options = { :polymorphic => true }
         if options[:counter_cache]
-          commentable_options.merge(:counter_cache => options[:counter_cache])
+          commentable_options.merge!(:counter_cache => options[:counter_cache])
         end
 
         belongs_to :commentable, commentable_options
