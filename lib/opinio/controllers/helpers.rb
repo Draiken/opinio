@@ -8,7 +8,8 @@ module Opinio
       end
 
       def render_comments(object, options = {})
-        render( :partial => "opinio/comments/comments", :locals => {:comments => object.comments.page(1), :commentable => object} )
+        limit = options.delete(:limit) || Opinio.model_name.constantize.default_per_page
+        render( :partial => "opinio/comments/comments", :locals => {:comments => object.comments.per(limit).page(1), :commentable => object, :options => options} )
       end
 
       def render_comments_form(object, options = {})
