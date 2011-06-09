@@ -1,9 +1,16 @@
-# Provide a simple gemspec so you can easily use your enginex
-# project in your rails apps through git.
+# -*- encoding: utf-8 -*-
+require File.expand_path( '../lib/opinio/version', __FILE__)
+
 Gem::Specification.new do |s|
-  s.name = "opinio"
-  s.summary = "A rails 3 engine for comments."
-  s.description = "Opinio is an engine used to add comments functionallity to rails 3 applications."
-  s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
-  s.version = "0.0.2"
+  s.name        = "opinio"
+  s.version     = Opinio::Version::VERSION
+  s.platform    = Gem::Platform::RUBY
+
+  s.authors     = [ "Luiz Felipe Garcia Pereira" ]
+  s.email       = [ "luiz.felipe.gp@gmail.com" ]
+
+  s.summary     = "A rails 3 engine for comments."
+  s.description = 'Opinio is an engine used to add comments functionallity to rails 3 applications.'
+  
+  s.files       = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
 end

@@ -29,6 +29,7 @@ The most common way to quickly get Opinio working is:
   rails g opinio:install comment
 
 This will generate the *Comment* model, migration and also generate the opinio initializer for customization of the engine.
+A `opinio_model` will be added on the `routes.rb`. This method adds the default urls for the model that will acts as the comment
 
 In order to add the comments functionallity to a model, you use the *opinio_subjectum* method
 
@@ -36,11 +37,17 @@ In order to add the comments functionallity to a model, you use the *opinio_subj
     opinio_subjectum
   end
 
-Now in your view, where the comments will be displayed, you simply add:
+On the `routes.rb` you should simply add an `opinio` for your resource that will have comments
+
+  resources :posts do
+    opinio
+  end
+
+If you want to display the comments for the item outside of the resource, you can simply add this to your views:
 
   <%= comments_for @post %>
 
-And theere you go, you can now comment in your post.
+And there you go, you can now comment in your post.
 Aditional options can be found on the {RDocs}[http://rubydoc.info/github/Draiken/opinio/master/frames]
 
 == Customization
@@ -63,9 +70,11 @@ without having to pass *:commentable_type* or *:commentable_id*.
 In order to do that, opinio provides a method to *ActionController::Base*:
 
   opinio_identifier do |params|
-    return Review.find(params[:review_id]) if params[:review_id]
-    return Product.find(params[:product_id]) if params[:product_id]
+    next Review.find(params[:review_id]) if params[:review_id]
+    next Product.find(params[:product_id]) if params[:product_id]
   end
+
+Note: you use next instead of return because it is a proc that will be executed later on, and you cannot return on procs
 
 Basically on this method you receive the *params* variable and you tell the engine, who owns
 the comments from that page.
@@ -110,7 +119,9 @@ Remember this engine is still in development :)
   * Haml views
   * Better controller overriding (coding and documentation)
   * Support for deeper levels of replies
+  * Refactor the `comments_for` helper
+  * Extract documentation to wiki
   * Add tons of rspecs for
     * controllers
     * routes
-    * models
+    * model extensions
