@@ -9,7 +9,7 @@ The engine is designed to work only with *Rails 3*
 
 Simply add the following line to your *Gemfile*:
 
-  gem "opinio", :git => "git://github.com/Draiken/opinio.git"
+  gem "opinio"
 
 and run:
 
