@@ -11,6 +11,10 @@ Gem::Specification.new do |s|
 
   s.summary     = "A rails 3 engine for comments."
   s.description = 'Opinio is an engine used to add comments functionallity to rails 3 applications.'
-  
+
+  s.add_dependency( 'rails', '~> 3.0' )
+  s.add_dependency( 'kaminari' )
+  s.add_dependency( 'jquery-rails' )
+
   s.files       = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
 end

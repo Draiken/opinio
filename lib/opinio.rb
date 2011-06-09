@@ -29,6 +29,9 @@ module Opinio
   mattr_accessor :destroy_conditions
   @@destroy_conditions = Proc.new { true }
 
+  mattr_accessor :current_user_method
+  @@current_user_method = :current_user
+
   def self.setup
     yield self
   end
