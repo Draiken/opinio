@@ -28,6 +28,13 @@ RSpec.configure do |config|
   require 'rspec/expectations'
   config.include RSpec::Matchers
 
+  config.around do |example_proc|
+    Rails.logger.info "\n\nRunning \"#{self.example.full_description}\" (#{self.example.metadata[:location]})\n\n"
+    example_proc.run
+  end
+  config.color_enabled = true
+  
+
   # == Mock Framework
   config.mock_with :rspec
 end
