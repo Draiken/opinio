@@ -11,7 +11,7 @@ module ActionDispatch::Routing
     def opinio_model(*args)
       options = args.extract_options!
       options[:controller] ||= 'opinio/comments'
-      resources :comments, :controller => options[:controller] do
+      resources :comments, options do
         get 'reply', :on => :member if Opinio.accept_replies
       end
     end

@@ -1,0 +1,6 @@
+= Changelog
+
+== 0.3.2
+
+* Added specs for routing and controllers
+* Added respond_to html format on create and destroy

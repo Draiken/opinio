@@ -121,7 +121,3 @@ Remember this engine is still in development :)
   * Support for deeper levels of replies
   * Refactor the `comments_for` helper
   * Extract documentation to wiki
-  * Add tons of rspecs for
-    * controllers
-    * routes
-    * model extensions

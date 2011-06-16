@@ -10,6 +10,10 @@ gem "jquery-rails"
 group :development do
   gem "ruby-debug19"
   gem 'guard-rspec'
+  if RUBY_PLATFORM =~ /darwin/i
+    gem 'rb-fsevent'
+    gem 'growl'
+  end
 end
 
 group :test do

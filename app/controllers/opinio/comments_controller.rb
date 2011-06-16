@@ -14,6 +14,11 @@ class Opinio::CommentsController < ApplicationController
     else
       flash[:error]  = I18n.translate('opinio.comment.error', :default => "Error sending the comment.")
     end
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to( resource ) }
+    end
   end
 
   def destroy
@@ -25,7 +30,12 @@ class Opinio::CommentsController < ApplicationController
     else
       #flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
       logger.warning "user #{send(Opinio.current_user_method)} tried to remove a comment from another user #{@comment.owner.id}"
-      render :text => "unauthorized", :status => 401
+      render :text => "unauthorized", :status => 401 and return
+    end
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to( @comment.commentable ) }
     end
   end
 
