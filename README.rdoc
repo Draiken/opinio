@@ -1,4 +1,5 @@
-= Opinio
+= Opinio 
+{}[http://travis-ci.org/Draiken/opinio.png]
 
 == Description
 
