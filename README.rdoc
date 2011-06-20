@@ -51,6 +51,11 @@ If you want to display the comments for the item outside of the resource, you ca
 And there you go, you can now comment in your post.
 Aditional options can be found on the {RDocs}[http://rubydoc.info/github/Draiken/opinio/master/frames]
 
+Alternatively you can render just the comments or just the form like this:
+
+  <%= render_comments @post %>
+  <%= render_comments_form @post %>
+
 == Customization
 
 === Views

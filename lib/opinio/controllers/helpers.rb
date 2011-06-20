@@ -18,5 +18,4 @@ module Opinio
     end
     
   end
-  
 end
