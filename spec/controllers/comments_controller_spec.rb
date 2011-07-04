@@ -61,6 +61,13 @@ describe Opinio::CommentsController do
   end
 
   describe "DELETE destroy" do
+
+    before do
+      Opinio.set_destroy_conditions do
+        true
+      end
+    end
+
     it "should remove the comment" do
       comment = create_valid_comment
       delete :destroy,
