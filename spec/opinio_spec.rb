@@ -28,6 +28,7 @@ describe Opinio do
       c.model_name = "Opinion"
     end
     Opinio.model_name.should == "Opinion"
+    Opinio.model_name = "Comment"
   end
 
   it "Should accept custom destroy conditions for the opinio model" do
