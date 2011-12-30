@@ -39,6 +39,12 @@ shared_examples_for :opinio do
     comment.errors[:commentable].should be_present
   end
 
+  it "and it should insist on having an owner" do
+    c = Comment.new(:body => "The Comment !")
+    c.commentable = @post
+    c.save.should == false
+  end
+
 end
 
 

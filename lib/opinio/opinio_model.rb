@@ -61,6 +61,8 @@ module Opinio
 
         validates_presence_of :commentable
 
+        validates :owner, :presence => true, :associated => true
+
         scope :owned_by, lambda {|owner| where('owner_id = ?', owner.id) }
 
         send :include, Opinio::OpinioModel::InstanceMethods
