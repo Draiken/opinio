@@ -3,7 +3,7 @@ source "http://rubygems.org"
 gemspec
 
 gem "kaminari"
-gem "rails", "~> 3.0.4"
+gem "rails", "~> 3"
 gem "sqlite3"
 gem "jquery-rails"
 
