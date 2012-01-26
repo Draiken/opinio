@@ -36,6 +36,16 @@ describe Opinio::CommentsController do
       flash[:notice].should be_present 
     end
 
+    it "shouldn't create an invalid comment" do
+      post :create,
+           :comment => { :body => nil },
+           :commentable_id => @post.id,
+           :commentable_type => 'Post'
+
+      response.should redirect_to( post_path(@post) )
+      flash[:error].should be_present 
+    end
+
     it "creates a comment with ajax" do
       post :create,
            :comment => { :body => 'A comment' },
@@ -44,7 +54,7 @@ describe Opinio::CommentsController do
            :format => :js
 
       response.headers["Content-Type"].should =~ /text\/javascript/
-      flash[:notice].should be_present 
+      flash[:notice].should_not be_present 
       response.should be_success
     end
   end

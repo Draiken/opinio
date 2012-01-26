@@ -13,18 +13,20 @@ shared_examples_for :opinio do
   end
 
   it "and should reject comments of comments" do
-    Opinio.accept_replies = true
+    Comment.class_eval do
+      include Opinio::OpinioModel::RepliesSupport
+    end
 
     c = Comment.new(:body => "The Comment !")
     c.commentable = @post
     c.owner_id = 1
     c.save
 
-    c2 = c.clone
+    c2 = c.dup
     c2.commentable = c
     c.save.should == true
 
-    c3 = c2.clone
+    c3 = c2.dup
     c3.commentable = c2
     c3.save.should == false
 

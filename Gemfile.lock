@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    opinio (0.3.2)
+    opinio (0.3.4)
       jquery-rails
       kaminari
-      rails (~> 3.0)
+      rails (~> 3)
 
 GEM
   remote: http://rubygems.org/

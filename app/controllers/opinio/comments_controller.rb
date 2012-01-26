@@ -10,14 +10,14 @@ class Opinio::CommentsController < ApplicationController
     @comment = resource.comments.build(params[:comment])
     @comment.owner = send(Opinio.current_user_method)
     if @comment.save
-      flash[:notice] = I18n.translate('opinio.comment.sent', :default => "Comment sent successfully.")
+      messages = {:notice => I18n.translate('opinio.comment.sent', :default => "Comment sent successfully.")}
     else
-      flash[:error]  = I18n.translate('opinio.comment.error', :default => "Error sending the comment.")
+      messages = {:error => I18n.translate('opinio.comment.error', :default => "Error sending the comment.")}
     end
 
     respond_to do |format|
       format.js
-      format.html { redirect_to( resource ) }
+      format.html { redirect_to( resource, :flash => messages ) }
     end
   end
 

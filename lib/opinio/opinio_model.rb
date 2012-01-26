@@ -32,7 +32,7 @@ module Opinio
         if Opinio.use_title
           attr_accessible :title 
           validates       :title,
-                          {}.merge( :length => options[:title_length] )
+                          {:presence => true}.merge( :length => options[:title_length] )
         end
         attr_accessible :body
 
@@ -66,10 +66,16 @@ module Opinio
         send :include, Opinio::OpinioModel::InstanceMethods
 
         if Opinio.accept_replies
-          validate :cannot_be_comment_of_a_comments_comment
-          opinio_subjectum :order => 'created_at ASC'
+          send :include, RepliesSupport
         end
 
+      end
+    end
+
+    module RepliesSupport
+      def self.included(base)
+        base.validate :cannot_be_comment_of_a_comments_comment
+        base.opinio_subjectum :order => 'created_at ASC'
       end
     end
 
