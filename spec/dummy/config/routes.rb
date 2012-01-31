@@ -7,7 +7,6 @@ Dummy::Application.routes.draw do
 
   resources :posts do
     opinio 'comments'
-    #get 'comments' => 'opinio/comments#index', :on => :member
   end
 
   # The priority is based upon order of creation:

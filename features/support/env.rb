@@ -5,7 +5,8 @@
 # files.
 
 ENV["RAILS_ENV"] = "test" # had to explicity state the test environment (or cucumber env.)
-ENV["RAILS_ROOT"] = File.expand_path(File.dirname(__FILE__) + '../../../spec/dummy/')
+
+ENV["RAILS_ROOT"] = File.expand_path(File.dirname(__FILE__) + "../../../spec/dummy/")
 require File.expand_path(File.dirname(__FILE__) + '../../../spec/dummy/config/environment')
 require 'cucumber/rails'
 
