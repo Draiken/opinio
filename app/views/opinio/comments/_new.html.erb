@@ -1,6 +1,6 @@
 <div id="new_comment">
   <% if send(Opinio.current_user_method) %>
-    <h2>Send Comments</h3>
+    <h3>Send Comments</h3>
     <%= form_for Comment.new, :remote => true do |f| %>
       <p>
         <%= f.label :body, "Comment" %>
