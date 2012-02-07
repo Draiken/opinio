@@ -22,6 +22,10 @@ module Opinio
         route "opinio_model"
       end
 
+      def add_dependency_gem
+        gem "kaminari"
+      end
+
       def self.next_migration_number(dirname)
         if ActiveRecord::Base.timestamped_migrations
           Time.now.utc.strftime("%Y%m%d%H%M%S")
