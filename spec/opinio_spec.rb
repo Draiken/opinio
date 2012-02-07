@@ -5,7 +5,7 @@ describe Opinio do
     Opinio.should be_a(Module)
   end
 
-  it "Should have options" do
+  it "should have options" do
     Opinio.model_name.should == "Comment"
     Opinio.model_name = "Test"
     Opinio.model_name.should == "Test"
@@ -14,7 +14,7 @@ describe Opinio do
     Opinio.use_title.should == true
   end
 
-  it "Should accept identifiers" do
+  it "should accept identifiers" do
     block = Proc.new { |params|
       params[:id] == 1
     }
@@ -23,7 +23,7 @@ describe Opinio do
     Opinio.check_custom_identifiers({:id => 0}).should == false
   end
 
-  it "Should be configurable" do
+  it "should be configurable" do
     Opinio.setup do |c|
       c.model_name = "Opinion"
     end
@@ -31,7 +31,7 @@ describe Opinio do
     Opinio.model_name = "Comment"
   end
 
-  it "Should accept custom destroy conditions for the opinio model" do
+  it "should accept custom destroy conditions for the opinio model" do
     user = User.new(:name => "lala")
     Opinio.set_destroy_conditions do |comment|
       comment.owner.name == "lala"
@@ -46,4 +46,20 @@ describe Opinio do
     controller.can_destroy_opinio?(comment).should be_true
     controller.can_destroy_opinio?(comment_owned_by_someone_else).should be_false
   end
+
+  it "should accept custom destroy conditions with a block" do
+    ActionController::Base.comment_destroy_conditions do
+      false
+    end
+    controller = ActionController::Base.new
+    controller.can_destroy_opinio?(double("comment")).should be_false
+
+    ActionController::Base.comment_destroy_conditions do
+      true 
+    end
+    controller = ActionController::Base.new
+    controller.can_destroy_opinio?(double("comment")).should be_true
+
+  end
+
 end
