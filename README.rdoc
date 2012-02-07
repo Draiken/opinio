@@ -49,12 +49,19 @@ If you want to display the comments for the item outside of the resource, you ca
   <%= comments_for @post %>
 
 And there you go, you can now comment in your post.
-Aditional options can be found on the {RDocs}[http://rubydoc.info/github/Draiken/opinio/master/frames]
 
 Alternatively you can render just the comments or just the form like this:
 
   <%= render_comments @post %>
   <%= render_comments_form @post %>
+
+If you need to render the comments with a specific page or limit
+you can use Kaminari's configurations like `paginates_per 10` on your comment model
+or you can customize it for specific views on the helpers
+
+  <%= render_comments @post, :page => params[:page], :limit => 5 %>
+
+This can also be used on the `comments_for` helper.
 
 == Customization
 
@@ -113,12 +120,25 @@ Another example would be using the *CanCan*:
 You get the picture, you're inside your controller's methods on that block
 so you can call anything your normal controllers call on actions.
 
+=== Testing
+
+Opinio provides a few shared examples for testing of your model with rspec
+On your opinio model test case you can require opinio's shared examples and use them
+
+  require 'opinio/shared_examples'
+
+  describe Comment do
+    it_should_behave_like :opinio
+  end
+
+  describe Post do
+    it_should_behave_like :opinio_subjectum
+  end
+
 == Contribution
 
 If you want to help in any way with *Opinio* please message me or fork the project, make the changes and send me a pull request.
 For issues please use the github {issues tracker}[https://github.com/Draiken/opinio/issues]
-
-Remember this engine is still in development :)
 
 === TODO
 

@@ -1,5 +1,4 @@
 module Opinio
-  #autoload :Railtie, 'opinio/railtie'
   autoload :Schema, 'opinio/schema'
 
   module Controllers
