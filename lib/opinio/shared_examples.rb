@@ -1,18 +1,18 @@
-require 'spec_helper'
-
 shared_examples_for :opinio do
+  let(:comment) { Comment.new }
   before(:all) do
     @post = Post.new(:title => "My first post", :body => "Damn I really suck at writing")
     @post.save
   end
 
-  it "and should add opinio functionallity" do
+  it "should have the correct attributes" do
     should respond_to(:owner)
     should respond_to(:body)
     should respond_to(:commentable)
   end
 
-  it "and should reject comments of comments" do
+
+  it "should not allow comments of comments" do
     Comment.class_eval do
       include Opinio::OpinioModel::RepliesSupport
     end
@@ -31,6 +31,12 @@ shared_examples_for :opinio do
     c3.save.should == false
 
     c3.errors[:base].count.should == 1
+  end
+
+  it "should validate presence of body and commentable" do
+    comment.should be_invalid
+    comment.errors[:body].should be_present
+    comment.errors[:commentable].should be_present
   end
 
 end
