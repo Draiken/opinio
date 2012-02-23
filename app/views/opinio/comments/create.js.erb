@@ -10,6 +10,6 @@ $('#no_comments').fadeOut()
     $('#comments').prepend("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>")
   <% end %>
 <% else %>
-  jQuery('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
-  jQuery('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
+  $('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
+  $('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
 <% end %>
