@@ -7,7 +7,7 @@ $('#no_comments').hide();
     $('#commentable_id').val('<%= @comment.commentable.commentable_id %>');
     $('#commentable_type').val('<%= @comment.commentable.commentable_type %>');
   <% else %>
-    $('#comments').prepend("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>");
+    $('#comments').<%= Opinio.sort_order == 'ASC' ? 'append' : 'prepend'%>("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>");
   <% end %>
   $('textarea#comment_body').val('');
 <% else %>

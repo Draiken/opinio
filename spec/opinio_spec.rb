@@ -14,6 +14,7 @@ describe Opinio do
     Opinio.use_title = true
     Opinio.use_title.should == true
     Opinio.strip_html_tags_on_save.should == true
+    Opinio.sort_order.should == "DESC"
   end
 
   it "should accept identifiers" do
