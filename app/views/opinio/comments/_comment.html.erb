@@ -2,7 +2,7 @@
 <li id="comment_<%= comment.id %>">
   <span>User: <%= comment.owner.id %></span>
   <p>
-    <%= comment.body %>
+    <%= simple_format(comment.body) %>
   </p>
   <%= link_to t('opinio.actions.delete'), comment_path(comment), :method => :delete, :remote => true %>
   <%# this enables only 1 level of replies %>

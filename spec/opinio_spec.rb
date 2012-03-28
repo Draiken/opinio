@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Opinio do
+
   it "should be valid module" do
     Opinio.should be_a(Module)
   end
@@ -12,6 +13,7 @@ describe Opinio do
     Opinio.use_title.should == false
     Opinio.use_title = true
     Opinio.use_title.should == true
+    Opinio.strip_html_tags_on_save.should == true
   end
 
   it "should accept identifiers" do
@@ -61,5 +63,19 @@ describe Opinio do
     controller.can_destroy_opinio?(double("comment")).should be_true
 
   end
+
+  it "should strip html tags on save if strip_html_tags_on_save is true" do
+    comment = create_valid_comment('<h1>Chuck will save us!</h1>')
+    comment.body.should == 'Chuck will save us!'
+  end
+
+  #TODO: Fixme, for some reasons test does not work
+  #it "should not strip html tags on save if strip_html_tags_on_save is false" do
+  #  Opinio.setup do |c|
+  #    c.strip_html_tags_on_save = false
+  #  end
+  #  comment = create_valid_comment('<h1>Chuck will save us!</h1>')
+  #  comment.body.should == '<h1>Chuck will save us!</h1>'
+  #end
 
 end

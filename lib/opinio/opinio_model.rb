@@ -71,6 +71,11 @@ module Opinio
           send :include, RepliesSupport
         end
 
+        if Opinio.strip_html_tags_on_save
+          send :include, ActionView::Helpers::SanitizeHelper
+          before_save :strip_html_tags
+        end
+
       end
     end
 
@@ -113,6 +118,10 @@ module Opinio
             errors.add :base, I18n.translate('opinio.cannot_be_comment_of_comment', :default => 'Cannot reply another comment\'s reply')
           end
         end
+      end
+
+      def strip_html_tags
+        self.body = strip_tags(self.body)
       end
 
     end
