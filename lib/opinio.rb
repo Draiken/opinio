@@ -31,6 +31,12 @@ module Opinio
   mattr_accessor :current_user_method
   @@current_user_method = :current_user
 
+  mattr_accessor :strip_html_tags_on_save
+  @@strip_html_tags_on_save = true
+
+  mattr_accessor :sort_order
+  @@sort_order = 'DESC'
+
   def self.setup
     yield self
   end

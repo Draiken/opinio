@@ -1,0 +1,16 @@
+en:
+  opinio:
+    actions:
+      delete: 'Delete'
+      reply: 'Reply'
+      add: 'Add comment'
+    messages:
+      no_comments_found: 'No comments found'
+      must_be_logged_in_to_comment: 'Must be logged in to comment.'
+      add_comment: 'Add comment'
+      comments: 'Comments'
+      comment_sent: 'Comment sent successfully.'
+      comment_sending_error: 'Error while sending the comment.'
+      comment_destroyed: 'Comment removed successfully.'
+      comment_interval: 'You must wait %{time} seconds to comment again.'
+      cannot_be_comment_of_comment: "Cannot reply another comment's reply"
