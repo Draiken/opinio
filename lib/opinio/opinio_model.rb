@@ -71,6 +71,11 @@ module Opinio
           send :include, RepliesSupport
         end
 
+        if Opinio.strip_html_tags_on_save
+          send :include, ActionView::Helpers::SanitizeHelper
+          before_save :strip_html_tags
+        end
+
       end
     end
 
@@ -93,12 +98,7 @@ module Opinio
           if (Time.now - last_comment.created_at).round >= self.comments_interval
             true
           else
-            errors.add(
-              :created_at,
-              I18n.t('opinio.comment_interval',
-                     :time => self.comments_interval,
-                     :default => "You must wait %{time} seconds to comment again.")
-            )
+            errors.add(:created_at, I18n.translate('opinio.messages.comment_interval', :time => self.comments_interval))
             false
           end
         else
@@ -110,9 +110,13 @@ module Opinio
       def cannot_be_comment_of_a_comments_comment
         if new_record? && self.commentable_type == Opinio.model_name
           if commentable.commentable_type == Opinio.model_name
-            errors.add :base, I18n.translate('opinio.cannot_be_comment_of_comment', :default => 'Cannot reply another comment\'s reply')
+            errors.add :base, I18n.t('opinio.messages,cannot_be_comment_of_comment')
           end
         end
+      end
+
+      def strip_html_tags
+        self.body = strip_tags(self.body)
       end
 
     end

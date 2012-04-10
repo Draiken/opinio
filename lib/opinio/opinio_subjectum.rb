@@ -12,7 +12,7 @@ module Opinio
         has_many :comments,
                  :class_name => Opinio.model_name,
                  :as => :commentable,
-                 :order => options.reverse_merge(:order => "created_at DESC")[:order],
+                 :order => options.reverse_merge(:order => "created_at #{Opinio.sort_order}")[:order],
                  :dependent => :destroy
 
 

@@ -2,12 +2,12 @@
 <li id="comment_<%= comment.id %>">
   <span>User: <%= comment.owner.id %></span>
   <p>
-    <%= comment.body %>
+    <%= simple_format(comment.body) %>
   </p>
-  <%= link_to 'Destroy', comment_path(comment), :method => :delete, :remote => true %>
+  <%= link_to t('opinio.actions.delete'), comment_path(comment), :method => :delete, :remote => true %>
   <%# this enables only 1 level of replies %>
   <% if Opinio.accept_replies && !reply %>
-    <span><%= link_to t("opinio.reply", :default => "Reply"), reply_comment_path(comment), :remote => true %></span>
+    <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
     <ul id="comment_<%= comment.id %>_replies" class="replies">
       <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
     </ul>
