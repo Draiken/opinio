@@ -10,14 +10,19 @@ class Opinio::CommentsController < ApplicationController
     @comment = resource.comments.build(params[:comment])
     @comment.owner = send(Opinio.current_user_method)
     if @comment.save
-      messages = { :notice => t('opinio.messages.comment_sent') }
+      flash_area = :notice
+      message = t('opinio.messages.comment_sent')
     else
-      messages = { :error => t('opinio.messages.comment_sending_error') }
+      flash_area = :error
+      message = t('opinio.messages.comment_sending_error')
     end
 
     respond_to do |format|
       format.js
-      format.html { redirect_to( resource, :flash => messages ) }
+      format.html do
+        set_flash(flash_area, message)
+        redirect_to(resource)
+      end
     end
   end
 
@@ -26,7 +31,7 @@ class Opinio::CommentsController < ApplicationController
 
     if can_destroy_opinio?(@comment)
       @comment.destroy
-      flash[:notice] = t('opinio.messages.comment_destroyed')
+      set_flash(:notice, t('opinio.messages.comment_destroyed'))
     else
       #flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
       logger.warn "user #{send(Opinio.current_user_method)} tried to remove a comment from another user #{@comment.owner.id}"
@@ -38,6 +43,5 @@ class Opinio::CommentsController < ApplicationController
       format.html { redirect_to( @comment.commentable ) }
     end
   end
-
   
 end

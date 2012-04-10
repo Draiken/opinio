@@ -1,10 +1,10 @@
 module Opinio
-  autoload :Schema, 'opinio/schema'
+  require 'opinio/schema'
 
   module Controllers
-    autoload :Helpers, 'opinio/controllers/helpers'
-    autoload :InternalHelpers, 'opinio/controllers/internal_helpers'
-    autoload :Replies, 'opinio/controllers/replies'
+    require 'opinio/controllers/helpers'
+    require 'opinio/controllers/internal_helpers'
+    require 'opinio/controllers/replies'
   end
 
   mattr_accessor :model_name
@@ -36,6 +36,9 @@ module Opinio
 
   mattr_accessor :sort_order
   @@sort_order = 'DESC'
+
+  mattr_accessor :set_flash
+  @@set_flash = true
 
   def self.setup
     yield self

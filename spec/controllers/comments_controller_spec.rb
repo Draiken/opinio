@@ -99,4 +99,36 @@ describe Opinio::CommentsController do
     end
   end
 
+  describe "setting the flash" do
+
+    context "when 'set_flash' option is false" do
+      before do
+        Opinio.stub(:set_flash).and_return(false)
+      end
+
+      it "should not set the flash" do
+        post :create,
+             :comment => { :body => 'A comment' },
+             :commentable_id => @post.id,
+             :commentable_type => 'Post'
+        
+        response.should redirect_to( post_path(@post) )
+        flash[:notice].should_not be_present 
+      end
+    end
+
+    context "when 'set_flash' option is true" do
+      it "should set the flash" do
+        post :create,
+             :comment => { :body => 'A comment' },
+             :commentable_id => @post.id,
+             :commentable_type => 'Post'
+        
+        response.should redirect_to( post_path(@post) )
+        flash[:notice].should be_present 
+      end
+    end
+
+  end
+
 end

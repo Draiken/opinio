@@ -28,6 +28,10 @@ module Opinio
       def resource_name
         Opinio.model_name
       end
+
+      def set_flash(name, message)
+        flash[name] = message if Opinio.set_flash
+      end
     end
   end
 end

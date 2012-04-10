@@ -15,6 +15,7 @@ describe Opinio do
     Opinio.use_title.should == true
     Opinio.strip_html_tags_on_save.should == true
     Opinio.sort_order.should == "DESC"
+    Opinio.set_flash.should == true
   end
 
   it "should accept identifiers" do
