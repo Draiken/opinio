@@ -1,0 +1,16 @@
+$('#no_comments').hide();
+<% if @comment.valid? %>
+  <% if @reply %>
+    if($('#comment_<%= @comment.commentable_id %> ul').length == 0)
+      $('#comment_<%= @comment.commentable_id %>').append('<ul id="comment_<%= @comment.commentable_id %>_replies" class="replies"></ul>');
+    $('#comment_<%= @comment.commentable_id %>_replies').append("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>");
+    $('#commentable_id').val('<%= @comment.commentable.commentable_id %>');
+    $('#commentable_type').val('<%= @comment.commentable.commentable_type %>');
+  <% else %>
+    $('#comments').<%= Opinio.sort_order == 'ASC' ? 'append' : 'prepend'%>("<%= escape_javascript( render @comment, :locals => {:reply => @reply} ) %>");
+  <% end %>
+  $('textarea#comment_body').val('');
+<% else %>
+  $('#comments').prepend("<%= escape_javascript(flash[:notice]) %>");
+  $('#comments').prepend("<%= escape_javascript(flash[:error]) %>");
+<% end %>
