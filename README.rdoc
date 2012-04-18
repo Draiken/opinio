@@ -30,15 +30,16 @@ The most common way to quickly get Opinio working is:
   rails g opinio:install comment
 
 This will generate the *Comment* model, migration and also generate the opinio initializer for customization of the engine.
-A `opinio_model` will be added on the `routes.rb`. This method adds the default urls for the model that will acts as the comment
+A +opinio_model+ will be added on the +routes.rb+. This method adds the default urls for the model that will act as the comment
+in your app.
 
-In order to add the comments functionallity to a model, you use the *opinio_subjectum* method
+In order to add the comments functionality to a model, you use the *opinio_subjectum* method
 
   class Post < ActiveRecord::Base
     opinio_subjectum
   end
 
-On the `routes.rb` you should simply add an `opinio` for your resource that will have comments
+On the +routes.rb+ you should simply add an +opinio+ for your resource that will have comments
 
   resources :posts do
     opinio
@@ -56,12 +57,12 @@ Alternatively you can render just the comments or just the form like this:
   <%= render_comments_form @post %>
 
 If you need to render the comments with a specific page or limit
-you can use Kaminari's configurations like `paginates_per 10` on your comment model
+you can use Kaminari's configurations like +paginates_per 10+ on your comment model
 or you can customize it for specific views on the helpers
 
   <%= render_comments @post, :page => params[:page], :limit => 5 %>
 
-This can also be used on the `comments_for` helper.
+This can also be used on the +comments_for+ helper.
 
 == Customization
 
@@ -142,8 +143,7 @@ For issues please use the github {issues tracker}[https://github.com/Draiken/opi
 
 === TODO
 
-  * Haml views
   * Better controller overriding (coding and documentation)
   * Support for deeper levels of replies
-  * Refactor the `comments_for` helper
+  * Refactor the +comments_for+ helper
   * Extract documentation to wiki

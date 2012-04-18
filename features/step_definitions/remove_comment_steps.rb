@@ -15,7 +15,7 @@ end
 
 When /^I remove that comment$/ do
   within("#comment_#{@comment.id}") do
-    click_link 'Destroy'
+    click_link 'Delete'
   end
 end
 

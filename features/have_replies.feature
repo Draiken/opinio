@@ -6,7 +6,6 @@ Feature: Have replies
   @javascript
   Scenario: Reply comment
     Given I visit a page with comments
-    When I follow "Reply" within "#comments li:first-child"
-    And I fill in "Comment" with "Your comment is useless"
-    And press "Send Comment"
-    Then I should see "Your comment is useless" within ".replies"
+    When I choose to reply a comment
+    And I send the reply
+    Then I should see my reply

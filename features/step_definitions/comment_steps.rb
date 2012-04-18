@@ -16,10 +16,7 @@ end
 
 When /^I send a comment$/ do
   @message = "I love to comment"
-  within "#new_comment" do
-    fill_in "comment_body", :with => @message 
-    click_button "Add comment"
-  end
+  send_comment(@message)
 end
 
 Then /^I should see the comment I've sent$/ do
@@ -28,3 +25,9 @@ Then /^I should see the comment I've sent$/ do
   end
 end
 
+def send_comment(message)
+  within "#new_comment" do
+    fill_in "comment_body", :with => message 
+    click_button "Add comment"
+  end
+end
