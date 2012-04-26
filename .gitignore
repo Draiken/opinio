@@ -8,3 +8,5 @@ spec/dummy/tmp/
 *.swp
 *.gem
 .rvmrc
+
+.DS_Store
