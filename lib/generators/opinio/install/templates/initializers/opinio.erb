@@ -18,6 +18,11 @@ Opinio.setup do |config|
   config.strip_html_tags_on_save = true
 
   # Comments sort order by created_at (DESC or ASC)
+  # Note: you can override that easily within each opinio subjectum
   config.sort_order = 'DESC'
+
+  # Wether or not the default opinio controller should set the flash
+  # when creating/removing comments
+  config.set_flash = true
 
 end
