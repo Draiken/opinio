@@ -14,5 +14,7 @@
 
 == 0.5
 
-* Fixed i18n support (thanks paxer)
-* Added strip_html_on_save (thanks paxer)
+* Fixed i18n support (thanks {paxer}[http://github.com/paxer])
+* Added strip_html_on_save (thanks {paxer}[http://github.com/paxer])
+* Added set_flash option
+* Added haml views (thanks {eicca}[http://github.com/eicca])
