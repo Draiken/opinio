@@ -10,3 +10,4 @@ spec/dummy/tmp/
 .rvmrc
 
 .DS_Store
+Gemfile.lock

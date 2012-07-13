@@ -26,36 +26,58 @@ describe Opinio::CommentsController do
   end
 
   describe "POST create" do
-    it "creates a comment" do
-      post :create,
-           :comment => { :body => 'A comment' },
-           :commentable_id => @post.id,
-           :commentable_type => 'Post'
-      
-      response.should redirect_to( post_path(@post) )
-      flash[:notice].should be_present 
+    context "with a valid comment" do
+      it "creates successfully" do
+        post :create,
+             :comment => { :body => 'A comment' },
+             :commentable_id => @post.id,
+             :commentable_type => 'Post'
+        
+        response.should redirect_to( post_path(@post) )
+        flash[:notice].should be_present 
+      end
     end
 
-    it "shouldn't create an invalid comment" do
-      post :create,
-           :comment => { :body => nil },
-           :commentable_id => @post.id,
-           :commentable_type => 'Post'
+    context "with an invalid comment" do
+      it "should redirect back with an error" do
+        post :create,
+          :comment => { :body => nil },
+          :commentable_id => @post.id,
+          :commentable_type => 'Post'
 
-      response.should redirect_to( post_path(@post) )
-      flash[:error].should be_present 
+        response.should redirect_to( post_path(@post) )
+        flash[:error].should be_present 
+      end
     end
 
-    it "creates a comment with ajax" do
-      post :create,
-           :comment => { :body => 'A comment' },
-           :commentable_id => @post.id,
-           :commentable_type => 'Post',
-           :format => :js
+    context "with an AJAX request" do
+      it "should create and return javascript" do
+        post :create,
+             :comment => { :body => 'A comment' },
+             :commentable_id => @post.id,
+             :commentable_type => 'Post',
+             :format => :js
 
-      response.headers["Content-Type"].should =~ /text\/javascript/
-      flash[:notice].should_not be_present 
-      response.should be_success
+        response.headers["Content-Type"].should =~ /text\/javascript/
+        flash[:notice].should_not be_present 
+        response.should be_success
+      end
+    end
+
+    context "with a different opinio_after_create_path" do
+
+      before do
+        subject.stub(:opinio_after_create_path).and_return(root_path)
+      end
+
+      it "should redirect to the set path" do
+        post :create,
+             :comment => { :body => 'A comment' },
+             :commentable_id => @post.id,
+             :commentable_type => 'Post'
+        
+        response.should redirect_to( root_path )
+      end
     end
   end
 

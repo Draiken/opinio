@@ -21,7 +21,7 @@ class Opinio::CommentsController < ApplicationController
       format.js
       format.html do
         set_flash(flash_area, message)
-        redirect_to(resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource)
+        redirect_to(opinio_after_create_path(resource))
       end
     end
   end

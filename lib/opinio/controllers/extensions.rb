@@ -25,6 +25,11 @@ module Opinio
         def can_destroy_opinio?(opinio)
           self.instance_exec(opinio, &Opinio.destroy_conditions)
         end
+
+        def opinio_after_create_path(resource)
+          puts self.class.name
+          resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
+        end
       end
     end
   end
