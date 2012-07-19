@@ -27,8 +27,11 @@ module Opinio
         end
 
         def opinio_after_create_path(resource)
-          puts self.class.name
           resource.is_a?(Opinio.model_name.constantize) ? resource.commentable : resource
+        end
+
+        def opinio_after_destroy_path(comment)
+          comment.commentable
         end
       end
     end

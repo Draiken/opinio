@@ -82,13 +82,15 @@ describe Opinio::CommentsController do
   end
 
   describe "GET reply" do
-    it "should return javascript" do
-      get :reply,
-          :id => create_valid_comment.id,
-          :format => :js
-          
-      response.headers["Content-Type"].should =~ /text\/javascript/
-      response.should be_success
+    context "with a javascript request" do
+      it "should return javascript" do
+        get :reply,
+            :id => create_valid_comment.id,
+            :format => :js
+            
+        response.headers["Content-Type"].should =~ /text\/javascript/
+        response.should be_success
+      end
     end
   end
 
@@ -100,24 +102,44 @@ describe Opinio::CommentsController do
       end
     end
 
-    it "should remove the comment" do
-      comment = create_valid_comment
-      delete :destroy,
-             :id => comment.id
+    context "with an HTML request" do
+      it "should remove the comment" do
+        comment = create_valid_comment
+        delete :destroy,
+               :id => comment.id
 
-      response.should redirect_to( post_path(comment.commentable) )
-      flash[:error].should_not be_present
+        response.should redirect_to( post_path(comment.commentable) )
+        flash[:error].should_not be_present
+      end
     end
 
-    it "should remove the comment with javascript" do
-      comment = create_valid_comment
-      delete :destroy,
-             :id => comment.id,
-             :format => :js
+    context "with a javascript request" do
+      it "should remove the comment" do
+        comment = create_valid_comment
+        delete :destroy,
+               :id => comment.id,
+               :format => :js
 
-      response.should be_success 
-      response.headers["Content-Type"].should =~ /text\/javascript/
-      flash[:error].should_not be_present
+        response.should be_success 
+        response.headers["Content-Type"].should =~ /text\/javascript/
+        flash[:error].should_not be_present
+      end
+    end
+
+    context "with a different opinio_after_destroy_path" do
+
+      before do
+        subject.stub(:opinio_after_destroy_path).and_return(root_path)
+      end
+
+      it "should redirect to the set path" do
+        comment = create_valid_comment
+
+        delete :destroy,
+               :id => comment.id
+
+        response.should redirect_to( root_path )
+      end
     end
   end
 

@@ -40,7 +40,7 @@ class Opinio::CommentsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html { redirect_to( @comment.commentable ) }
+      format.html { redirect_to( opinio_after_destroy_path(@comment) ) }
     end
   end
   
