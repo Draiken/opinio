@@ -7,6 +7,10 @@ module Opinio
     require 'opinio/controllers/replies'
   end
 
+  require 'opinio/railtie'
+  require 'opinio/rails'
+  require 'opinio/orm/active_record'
+
   mattr_accessor :model_name
   @@model_name = "Comment"
 
@@ -53,14 +57,10 @@ module Opinio
   end
 
   def self.check_custom_identifiers(params)
-    self.custom_identifiers.each do |idf|
-      ret = idf.call(params)
-      return ret unless ret.nil?
+    self.custom_identifiers.each do |identifier|
+      identified = identifier.call(params)
+      return identified unless identified.nil?
     end
     nil
   end
-
-  require File.join(File.dirname(__FILE__), 'opinio', 'railtie')
-  require File.join(File.dirname(__FILE__), 'opinio', 'rails')
-  require File.join(File.dirname(__FILE__), 'opinio', 'orm', 'active_record')
 end
