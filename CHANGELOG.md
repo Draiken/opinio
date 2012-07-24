@@ -3,6 +3,7 @@
 ## 0.5.1
 
 * Added two new methods for easy customization of the controller's flow: `opinio_after_create_path` and `opinio_after_destroy_path`
+* Changed default destroy conditions to false to prevent unsecure behaviour
 
 
 ## 0.5

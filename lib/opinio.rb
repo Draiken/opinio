@@ -26,7 +26,7 @@ module Opinio
   @@interval_between_comments = false
 
   mattr_accessor :destroy_conditions
-  @@destroy_conditions = Proc.new { true }
+  @@destroy_conditions = Proc.new { false }
 
   mattr_accessor :current_user_method
   @@current_user_method = :current_user

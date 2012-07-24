@@ -14,6 +14,11 @@ Given /^I have sent a comment$/ do
 end
 
 When /^I remove that comment$/ do
+  # forces any comment to be destroyed by anyone
+  Opinio.set_destroy_conditions do
+    true
+  end
+
   within("#comment_#{@comment.id}") do
     click_link 'Delete'
   end
