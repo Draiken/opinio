@@ -66,18 +66,5 @@ describe Opinio do
 
   end
 
-  it "should strip html tags on save if strip_html_tags_on_save is true" do
-    comment = create_valid_comment('<h1>Chuck will save us!</h1>')
-    comment.body.should == 'Chuck will save us!'
-  end
-
-  #TODO: Fixme, for some reasons test does not work
-  #it "should not strip html tags on save if strip_html_tags_on_save is false" do
-  #  Opinio.setup do |c|
-  #    c.strip_html_tags_on_save = false
-  #  end
-  #  comment = create_valid_comment('<h1>Chuck will save us!</h1>')
-  #  comment.body.should == '<h1>Chuck will save us!</h1>'
-  #end
 
 end

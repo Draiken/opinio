@@ -45,6 +45,34 @@ shared_examples_for :opinio do
     c.save.should == false
   end
 
+  context "when strip_html_tags_on_save is true" do
+    it "should strip html tags" do
+      comment = create_valid_comment('<h1>Chuck will save us!</h1>')
+      comment.body.should == 'Chuck will save us!'
+    end
+  end
+
+  context "when strip_html_tags_on_save is false" do
+    
+    # we have to create a different class
+    # because opinio adds the strip tags callbacks
+    # only once when opinio is called on the class
+    class NoSanitizerComment < ActiveRecord::Base
+      self.table_name = :comments
+    end
+
+    before do
+      Opinio.stub(:strip_html_tags_on_save).and_return(false)
+      NoSanitizerComment.class_eval do
+        opinio
+      end
+    end
+    it "should not strip html tags" do
+      comment = create_valid_comment('<h1>Chuck will save us!</h1>', NoSanitizerComment)
+      comment.body.should == '<h1>Chuck will save us!</h1>'
+    end
+  end
+
 end
 
 
