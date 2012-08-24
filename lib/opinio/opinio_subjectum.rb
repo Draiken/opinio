@@ -2,26 +2,22 @@ module Opinio
   module OpinioSubjectum
   
     def self.included(base)
-      base.extend         ClassMethods
+      base.extend(ClassMethods)
     end
   
     module ClassMethods
       def opinio_subjectum(*args)
         options = args.extract_options!
+        options.delete(:as)
 
-        has_many :comments,
-                 :class_name => Opinio.model_name,
-                 :as => :commentable,
-                 :order => options.reverse_merge(:order => "created_at #{Opinio.sort_order}")[:order],
-                 :dependent => :destroy
+        default_options = { :class_name => Opinio.model_name,
+                            :as => :commentable,
+                            :order => "created_at #{Opinio.sort_order}",
+                            :dependent => :destroy }
 
+        has_many :comments, default_options.merge(options)
 
-        send :include, Opinio::OpinioSubjectum::InstanceMethods
       end
-    end
-  
-    module InstanceMethods
-  
     end
   
   end
