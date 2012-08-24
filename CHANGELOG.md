@@ -1,9 +1,13 @@
 # Changelog
 
-## 0.5.1
+## 0.6
 
 * Added two new methods for easy customization of the controller's flow: `opinio_after_create_path` and `opinio_after_destroy_path`
 * Changed default destroy conditions to false to prevent unsecure behaviour
+* Complete change in the opinio model removing unnecessary validations and
+  leaving all the options to the developer instead of using the engine
+* Changed how `opinio_subjectum` handles the options passed, now letting you
+  customize anything like you would in a `has_many` relationship
 
 
 ## 0.5
