@@ -77,6 +77,10 @@ Another customization you can do is set the +counter_cache+ to true in the comme
 
 The other two customizations are only made through the initializer, and they are the +accept_replies+ which defaults to true and +strip_html_tags_on_save+ which also defaults to true.
 
+Validations on the opinio model are very basic, just ensuring it has a body, a commentable and an owner, if you want any other kind of validation, like the minimum size of a comment, you can use the regular AR validations as you wish.
+
+Remember that if you use titles, you need to add that to your comments table, since the generator doesn't add it by default.
+
 ==== Opinio Subjectum
 
 To change how the models that actually have the comments, you can customize them with any option you would use to a regular +has_many+ relationship in ActiveRecord.
