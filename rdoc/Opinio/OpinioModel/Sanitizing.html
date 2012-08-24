@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module Opinio::OpinioModel::Sanitizing - Opinio</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/opinio/opinio_model.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-included">::included</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Opinio.html">Opinio</a>
+  
+    <li><a href="../../Opinio/Controllers.html">Opinio::Controllers</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a>
+  
+    <li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a>
+  
+    <li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a>
+  
+    <li><a href="../../Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a>
+  
+    <li><a href="../../Opinio/Engine.html">Opinio::Engine</a>
+  
+    <li><a href="../../Opinio/Generators.html">Opinio::Generators</a>
+  
+    <li><a href="../../Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a>
+  
+    <li><a href="../../Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a>
+  
+    <li><a href="../../Opinio/OpinioModel.html">Opinio::OpinioModel</a>
+  
+    <li><a href="../../Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a>
+  
+    <li><a href="../../Opinio/OpinioModel/RepliesSupport.html">Opinio::OpinioModel::RepliesSupport</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Sanitizing.html">Opinio::OpinioModel::Sanitizing</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Validations.html">Opinio::OpinioModel::Validations</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Validations/IntervalMethods.html">Opinio::OpinioModel::Validations::IntervalMethods</a>
+  
+    <li><a href="../../Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a>
+  
+    <li><a href="../../Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a>
+  
+    <li><a href="../../Opinio/Orm.html">Opinio::Orm</a>
+  
+    <li><a href="../../Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a>
+  
+    <li><a href="../../Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a>
+  
+    <li><a href="../../Opinio/Schema.html">Opinio::Schema</a>
+  
+    <li><a href="../../Opinio/Version.html">Opinio::Version</a>
+  
+    <li><a href="../../ActionDispatch.html">ActionDispatch</a>
+  
+    <li><a href="../../ActionDispatch/Routing.html">ActionDispatch::Routing</a>
+  
+    <li><a href="../../ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a>
+  
+    <li><a href="../../Create.html">Create</a>
+  
+    <li><a href="../../NoSanitizerComment.html">NoSanitizerComment</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Opinio::OpinioModel::Sanitizing</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-included" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">included</span><span
+            class="method-args">(base)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="included-source">
+            <pre><span class="ruby-comment"># File lib/opinio/opinio_model.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+  <span class="ruby-identifier">base</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">ActionView</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span><span class="ruby-operator">::</span><span class="ruby-constant">SanitizeHelper</span>
+    <span class="ruby-identifier">before_save</span> <span class="ruby-value">:strip_html_tags</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- included-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- included-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,303 +1,249 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-	<title>Module: Opinio::OpinioModel::ClassMethods</title>
+<title>module Opinio::OpinioModel::ClassMethods - Opinio</title>
 
-	<link rel="stylesheet" href="../../rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
-	<script src="../../js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="../../js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
 
-</head>
-<body class="module">
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="../../index.html">Home</a>
-          <a href="../../index.html#classes">Classes</a>
-          <a href="../../index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="../../lib/opinio/opinio_model_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/opinio/opinio_model.rb">lib/opinio/opinio_model.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-			
-		</div>
 
-		<div id="class-metadata">
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-			<!-- Parent Class -->
-			
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-			<!-- Namespace Contents -->
-			
 
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-i-opinio">#opinio</a></li>
-					
-				</ul>
-			</div>
-			
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/opinio/opinio_model.rb
+  </ul>
+</nav>
 
-			<!-- Included Modules -->
-			
-		</div>
+    
+  </div>
 
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="../../README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="../../images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
+  <ul class="link-list">
+    
+    <li><a href="#method-i-opinio">#opinio</a>
+    
+  </ul>
+</nav>
 
-				<ul class="link-list">
-				
-					<li><a href="../../Opinio.html">Opinio</a></li>
-				
-					<li><a href="../../Opinio/Controllers.html">Opinio::Controllers</a></li>
-				
-					<li><a href="../../Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a></li>
-				
-					<li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
-				
-					<li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
-				
-					<li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
-				
-					<li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
-				
-					<li><a href="../../Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a></li>
-				
-					<li><a href="../../Opinio/Engine.html">Opinio::Engine</a></li>
-				
-					<li><a href="../../Opinio/Generators.html">Opinio::Generators</a></li>
-				
-					<li><a href="../../Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a></li>
-				
-					<li><a href="../../Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a></li>
-				
-					<li><a href="../../Opinio/OpinioModel.html">Opinio::OpinioModel</a></li>
-				
-					<li><a href="../../Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a></li>
-				
-					<li><a href="../../Opinio/OpinioModel/InstanceMethods.html">Opinio::OpinioModel::InstanceMethods</a></li>
-				
-					<li><a href="../../Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a></li>
-				
-					<li><a href="../../Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a></li>
-				
-					<li><a href="../../Opinio/OpinioSubjectum/InstanceMethods.html">Opinio::OpinioSubjectum::InstanceMethods</a></li>
-				
-					<li><a href="../../Opinio/Orm.html">Opinio::Orm</a></li>
-				
-					<li><a href="../../Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a></li>
-				
-					<li><a href="../../Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a></li>
-				
-					<li><a href="../../Opinio/Schema.html">Opinio::Schema</a></li>
-				
-					<li><a href="../../ActionDispatch.html">ActionDispatch</a></li>
-				
-					<li><a href="../../ActionDispatch/Routing.html">ActionDispatch::Routing</a></li>
-				
-					<li><a href="../../ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
+  </div>
 
-			
-		</div>
-	</div>
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
 
-	<div id="documentation">
-		<h1 class="module">Opinio::OpinioModel::ClassMethods</h1>
+  <ul>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
 
-		<div id="description">
-			
-		</div>
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
 
-		<!-- Constants -->
-		
+  <ul class="link-list">
+  
+    <li><a href="../../Opinio.html">Opinio</a>
+  
+    <li><a href="../../Opinio/Controllers.html">Opinio::Controllers</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a>
+  
+    <li><a href="../../Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a>
+  
+    <li><a href="../../Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a>
+  
+    <li><a href="../../Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a>
+  
+    <li><a href="../../Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a>
+  
+    <li><a href="../../Opinio/Engine.html">Opinio::Engine</a>
+  
+    <li><a href="../../Opinio/Generators.html">Opinio::Generators</a>
+  
+    <li><a href="../../Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a>
+  
+    <li><a href="../../Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a>
+  
+    <li><a href="../../Opinio/OpinioModel.html">Opinio::OpinioModel</a>
+  
+    <li><a href="../../Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a>
+  
+    <li><a href="../../Opinio/OpinioModel/RepliesSupport.html">Opinio::OpinioModel::RepliesSupport</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Sanitizing.html">Opinio::OpinioModel::Sanitizing</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Validations.html">Opinio::OpinioModel::Validations</a>
+  
+    <li><a href="../../Opinio/OpinioModel/Validations/IntervalMethods.html">Opinio::OpinioModel::Validations::IntervalMethods</a>
+  
+    <li><a href="../../Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a>
+  
+    <li><a href="../../Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a>
+  
+    <li><a href="../../Opinio/Orm.html">Opinio::Orm</a>
+  
+    <li><a href="../../Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a>
+  
+    <li><a href="../../Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a>
+  
+    <li><a href="../../Opinio/Schema.html">Opinio::Schema</a>
+  
+    <li><a href="../../Opinio/Version.html">Opinio::Version</a>
+  
+    <li><a href="../../ActionDispatch.html">ActionDispatch</a>
+  
+    <li><a href="../../ActionDispatch/Routing.html">ActionDispatch::Routing</a>
+  
+    <li><a href="../../ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a>
+  
+    <li><a href="../../Create.html">Create</a>
+  
+    <li><a href="../../NoSanitizerComment.html">NoSanitizerComment</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+  </ul>
+</nav>
 
-		<!-- Attributes -->
-		
+  </div>
+</nav>
 
-		<!-- Methods -->
-		
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
+<div id="documentation">
+  <h1 class="module">module Opinio::OpinioModel::ClassMethods</h1>
 
-		
-			<div id="opinio-method" class="method-detail ">
-				<a name="method-i-opinio"></a>
+  <div id="description" class="description">
+    
+  </div><!-- description -->
 
-				<div class="method-heading">
-				
-					<span class="method-name">opinio</span><span
-						class="method-args">(*args)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
 
-				<div class="method-description">
-					
-					<p>
-Adds the <a href="../../Opinio.html">Opinio</a> functionallity to the model
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-opinio" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">opinio</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Adds the <a href="../../Opinio.html">Opinio</a> functionallity to the model
 You can pass a hash of options to customize the <a
-href="../../Opinio.html">Opinio</a> model
-</p>
-<h3>Options</h3>
-<dl>
-<dt>:belongs_to</dt><dd><p>
-You can specify the class that owns the comments on
-<tt>config/initializers/opinio.rb</tt> but you can also pass it explicitly
-here: eg. <tt>:belongs_to =&gt; &quot;Admin&quot;</tt>
-</p>
-</dd>
-<dt>:counter_cache</dt><dd><p>
-Customize the counter cache here, defaults to false
-</p>
-</dd>
-<dt>:body_length</dt><dd><p>
-You can pass a <tt>Range</tt> to determine the size of the body that will
-be validated
-</p>
-</dd>
-<dt>:title_length</dt><dd><p>
-If you are using titles in your opinio model (set on the initializer) you
-can pass a <tt>Range</tt> so it is validated.
-</p>
-</dd>
-</dl>
-					
+href="../../Opinio.html">Opinio</a> model</p>
+          
 
-					
-					<div class="method-source-code"
-						id="opinio-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/opinio/opinio_model.rb, line 28</span>
-28:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">opinio</span>(*<span class="ruby-identifier">args</span>)
-29:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
-30: 
-31:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">use_title</span>
-32:           <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:title</span> 
-33:           <span class="ruby-identifier">validates</span>       <span class="ruby-value">:title</span>,
-34:                           {}.<span class="ruby-identifier">merge</span>( <span class="ruby-value">:length</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:title_length</span>] )
-35:         <span class="ruby-keyword kw">end</span>
-36:         <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:body</span>
-37: 
-38:         <span class="ruby-identifier">commentable_options</span> = { <span class="ruby-value">:polymorphic</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }
-39:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>]
-40:           <span class="ruby-identifier">commentable_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value">:counter_cache</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:counter_cache</span>])
-41:         <span class="ruby-keyword kw">end</span>
-42: 
-43:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:commentable</span>, <span class="ruby-identifier">commentable_options</span>
-44:         <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:owner</span>, <span class="ruby-value">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:belongs_to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">owner_class_name</span>)[<span class="ruby-value">:belongs_to</span>]
-45: 
-46:         <span class="ruby-comment cmt">#TODO: refactor this</span>
-47:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>
-48:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:last_comment_time</span>, <span class="ruby-value">:if</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:new_record?</span>
-49:           <span class="ruby-identifier">cattr_accessor</span> <span class="ruby-value">:comments_interval</span>
-50:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">comments_interval</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">interval_between_comments</span>)[<span class="ruby-value">:time</span>]
-51:         <span class="ruby-keyword kw">end</span>
-52: 
-53:         <span class="ruby-identifier">extra_options</span> = {}
-54:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:body_length</span>]
-55:           <span class="ruby-identifier">extra_options</span> = { <span class="ruby-value">:length</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:body_length</span>] }
-56:         <span class="ruby-keyword kw">end</span>
-57: 
-58:         <span class="ruby-identifier">validates</span> <span class="ruby-value">:body</span>,
-59:                   { <span class="ruby-value">:presence</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span> }.<span class="ruby-identifier">reverse_merge</span>(<span class="ruby-identifier">extra_options</span>)
-60: 
-61:         <span class="ruby-identifier">validates_presence_of</span> <span class="ruby-value">:commentable</span>
-62: 
-63:         <span class="ruby-identifier">scope</span> <span class="ruby-value">:owned_by</span>, <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">owner</span><span class="ruby-operator">|</span> <span class="ruby-identifier">where</span>(<span class="ruby-value str">'owner_id = ?'</span>, <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">id</span>) }
-64: 
-65:         <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Opinio</span><span class="ruby-operator">::</span><span class="ruby-constant">OpinioModel</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>
-66: 
-67:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">accept_replies</span>
-68:           <span class="ruby-identifier">validate</span> <span class="ruby-value">:cannot_be_comment_of_a_comments_comment</span>
-69:           <span class="ruby-identifier">opinio_subjectum</span> <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'created_at ASC'</span>
-70:         <span class="ruby-keyword kw">end</span>
-71: 
-72:       <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+          
+          <div class="method-source-code" id="opinio-source">
+            <pre><span class="ruby-comment"># File lib/opinio/opinio_model.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">opinio</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">included_modules</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">Opinio</span><span class="ruby-operator">::</span><span class="ruby-constant">OpinioModel</span><span class="ruby-operator">::</span><span class="ruby-constant">Validations</span>)
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
 
-				
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">use_title</span>
+    <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:title</span> 
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">attr_accessible</span> <span class="ruby-value">:body</span>
 
-				
-			</div>
+  <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:commentable</span>, <span class="ruby-value">:polymorphic</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:counter_cache</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:counter_cache</span>, <span class="ruby-keyword">false</span>) 
+  <span class="ruby-identifier">belongs_to</span> <span class="ruby-value">:owner</span>, <span class="ruby-value">:class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:owner_class_name</span>, <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">owner_class_name</span>)
 
-		
-		</div>
-	
+  <span class="ruby-identifier">scope</span> <span class="ruby-value">:owned_by</span>, <span class="ruby-identifier">lambda</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">owner</span><span class="ruby-operator">|</span> <span class="ruby-identifier">where</span>(<span class="ruby-string">'owner_id = ?'</span>, <span class="ruby-identifier">owner</span>.<span class="ruby-identifier">id</span>) }
 
-	</div>
+  <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Opinio</span><span class="ruby-operator">::</span><span class="ruby-constant">OpinioModel</span><span class="ruby-operator">::</span><span class="ruby-constant">Validations</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">accept_replies</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">RepliesSupport</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">strip_html_tags_on_save</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-value">:include</span>, <span class="ruby-constant">Sanitizing</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- opinio-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- opinio-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
 
 
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
-
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-
-</body>
-</html>
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

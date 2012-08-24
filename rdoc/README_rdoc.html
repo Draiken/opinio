@@ -1,279 +1,357 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-	<title>File: README.rdoc [Opinio]</title>
+<title>README - Opinio</title>
 
-	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-	<script src="./js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
-</head>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
 
 <body class="file">
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
 
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="./images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-				<ul class="link-list">
-				
-					<li><a href="./Opinio.html">Opinio</a></li>
-				
-					<li><a href="./Opinio/Controllers.html">Opinio::Controllers</a></li>
-				
-					<li><a href="./Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a></li>
-				
-					<li><a href="./Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a></li>
-				
-					<li><a href="./Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a></li>
-				
-					<li><a href="./Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a></li>
-				
-					<li><a href="./Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a></li>
-				
-					<li><a href="./Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a></li>
-				
-					<li><a href="./Opinio/Engine.html">Opinio::Engine</a></li>
-				
-					<li><a href="./Opinio/Generators.html">Opinio::Generators</a></li>
-				
-					<li><a href="./Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a></li>
-				
-					<li><a href="./Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a></li>
-				
-					<li><a href="./Opinio/OpinioModel.html">Opinio::OpinioModel</a></li>
-				
-					<li><a href="./Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a></li>
-				
-					<li><a href="./Opinio/OpinioModel/InstanceMethods.html">Opinio::OpinioModel::InstanceMethods</a></li>
-				
-					<li><a href="./Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a></li>
-				
-					<li><a href="./Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a></li>
-				
-					<li><a href="./Opinio/OpinioSubjectum/InstanceMethods.html">Opinio::OpinioSubjectum::InstanceMethods</a></li>
-				
-					<li><a href="./Opinio/Orm.html">Opinio::Orm</a></li>
-				
-					<li><a href="./Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a></li>
-				
-					<li><a href="./Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a></li>
-				
-					<li><a href="./Opinio/Schema.html">Opinio::Schema</a></li>
-				
-					<li><a href="./ActionDispatch.html">ActionDispatch</a></li>
-				
-					<li><a href="./ActionDispatch/Routing.html">ActionDispatch::Routing</a></li>
-				
-					<li><a href="./ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-			
-		</div>
-	</div>
 
-	<div id="documentation">
-		<h1><a href="Opinio.html">Opinio</a></h1>
-<h2>Description</h2>
-<p>
-<a href="Opinio.html">Opinio</a> is an engine used to add comments
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Opinio.html">Opinio</a>
+  
+    <li><a href="./Opinio/Controllers.html">Opinio::Controllers</a>
+  
+    <li><a href="./Opinio/Controllers/Extensions.html">Opinio::Controllers::Extensions</a>
+  
+    <li><a href="./Opinio/Controllers/Extensions/ClassMethods.html">Opinio::Controllers::Extensions::ClassMethods</a>
+  
+    <li><a href="./Opinio/Controllers/Extensions/InstanceMethods.html">Opinio::Controllers::Extensions::InstanceMethods</a>
+  
+    <li><a href="./Opinio/Controllers/Helpers.html">Opinio::Controllers::Helpers</a>
+  
+    <li><a href="./Opinio/Controllers/InternalHelpers.html">Opinio::Controllers::InternalHelpers</a>
+  
+    <li><a href="./Opinio/Controllers/Replies.html">Opinio::Controllers::Replies</a>
+  
+    <li><a href="./Opinio/Engine.html">Opinio::Engine</a>
+  
+    <li><a href="./Opinio/Generators.html">Opinio::Generators</a>
+  
+    <li><a href="./Opinio/Generators/InstallGenerator.html">Opinio::Generators::InstallGenerator</a>
+  
+    <li><a href="./Opinio/Generators/ViewsGenerator.html">Opinio::Generators::ViewsGenerator</a>
+  
+    <li><a href="./Opinio/OpinioModel.html">Opinio::OpinioModel</a>
+  
+    <li><a href="./Opinio/OpinioModel/ClassMethods.html">Opinio::OpinioModel::ClassMethods</a>
+  
+    <li><a href="./Opinio/OpinioModel/RepliesSupport.html">Opinio::OpinioModel::RepliesSupport</a>
+  
+    <li><a href="./Opinio/OpinioModel/Sanitizing.html">Opinio::OpinioModel::Sanitizing</a>
+  
+    <li><a href="./Opinio/OpinioModel/Validations.html">Opinio::OpinioModel::Validations</a>
+  
+    <li><a href="./Opinio/OpinioModel/Validations/IntervalMethods.html">Opinio::OpinioModel::Validations::IntervalMethods</a>
+  
+    <li><a href="./Opinio/OpinioSubjectum.html">Opinio::OpinioSubjectum</a>
+  
+    <li><a href="./Opinio/OpinioSubjectum/ClassMethods.html">Opinio::OpinioSubjectum::ClassMethods</a>
+  
+    <li><a href="./Opinio/Orm.html">Opinio::Orm</a>
+  
+    <li><a href="./Opinio/Orm/ActiveRecord.html">Opinio::Orm::ActiveRecord</a>
+  
+    <li><a href="./Opinio/Orm/ActiveRecord/Schema.html">Opinio::Orm::ActiveRecord::Schema</a>
+  
+    <li><a href="./Opinio/Schema.html">Opinio::Schema</a>
+  
+    <li><a href="./Opinio/Version.html">Opinio::Version</a>
+  
+    <li><a href="./ActionDispatch.html">ActionDispatch</a>
+  
+    <li><a href="./ActionDispatch/Routing.html">ActionDispatch::Routing</a>
+  
+    <li><a href="./ActionDispatch/Routing/Mapper.html">ActionDispatch::Routing::Mapper</a>
+  
+    <li><a href="./Create.html">Create</a>
+  
+    <li><a href="./NoSanitizerComment.html">NoSanitizerComment</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-Opinio+"><a href="Opinio.html">Opinio</a> </h1>
+
+<p><img src="http://travis-ci.org/Draiken/opinio.png" /></p>
+
+<p><strong>IMPORTANT</strong> Version 0.6 might break some behaviour from 0.5
+and lower versions, please refer to the <a
+href="https://github.com/Draiken/opinio/blob/master/CHANGELOG.rdoc">changelog</a></p>
+
+<h2 id="label-Description">Description</h2>
+
+<p><a href="Opinio.html">Opinio</a> is an engine used to add comments
 behaviour to your application. The engine is designed to work only with
-*Rails 3*
-</p>
-<h2>Intallation</h2>
-<p>
-Simply add the following line to your <tt>Gemfile</tt>:
-</p>
-<pre>
-  gem &quot;opinio&quot;, :git =&gt; &quot;git://github.com/Draiken/opinio.git&quot;
+*Rails 3*</p>
+
+<h2 id="label-Intallation">Intallation</h2>
+
+<p>Simply add the following line to your <strong>Gemfile</strong>:</p>
+
+<pre>gem &quot;opinio&quot;</pre>
+
+<p>and run:</p>
+
+<pre>bundle</pre>
+
+<h2 id="label-Usage">Usage</h2>
+
+<p><a href="Opinio.html">Opinio</a> provides generators to facilitate it's
+usage. The most common way to quickly get <a href="Opinio.html">Opinio</a>
+working is:</p>
+
+<pre>rails g opinio:install comment</pre>
+
+<p>This will generate the <strong>Comment</strong> model, migration and also
+generate the opinio initializer for customization of the engine. A
+<code>opinio_model</code> will be added on the <code>routes.rb</code>. This
+method adds the default urls for the model that will act as the comment in
+your app.</p>
+
+<p>In order to add the comments functionality to a model, you use the
+<strong>opinio_subjectum</strong> method</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Post</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">opinio_subjectum</span>
+<span class="ruby-keyword">end</span>
 </pre>
-<p>
-and run:
-</p>
-<pre>
-  bundle
-</pre>
-<h2>Documentation</h2>
-<p>
-Rdocs here:
-</p>
-<pre>
-  {http://rubydoc.info/github/Draiken/opinio/master/frames}[http://rubydoc.info/github/Draiken/opinio/master/frames]
-</pre>
-<h2>Usage</h2>
-<p>
-<a href="Opinio.html">Opinio</a> provides generators to facilitate
-it&#8217;s usage. The most common way to quickly get <a
-href="Opinio.html">Opinio</a> working is:
-</p>
-<pre>
-  rails g opinio:install comment
-</pre>
-<p>
-This will generate the <b>Comment</b> model, migration and also generate
-the opinio initializer for customization of the engine.
-</p>
-<p>
-In order to add the comments functionallity to a model, you use the
-<b>opinio_subjectum</b> method
-</p>
-<pre>
-  class Post &lt; ActiveRecord::Base
-    opinio_subjectum
-  end
-</pre>
-<p>
-Now in your view, where the comments will be displayed, you simply add:
-</p>
-<pre>
-  &lt;%= comments_for @post %&gt;
-</pre>
-<p>
-And theere you go, you can now comment in your post. Aditional options can
-be found on the <a
-href="http://rubydoc.info/github/Draiken/opinio/master/frames">RDocs</a>
-</p>
-<h2>Customization</h2>
-<h3>Views</h3>
-<p>
-Of course you will want to customize how the comments are displayed or any
+
+<p>On the <code>routes.rb</code> you should simply add an <code>opinio</code>
+for your commentable resource</p>
+
+<pre>resources :posts do
+  opinio
+end</pre>
+
+<p>To render the comments in your views, there is a helper to display the
+resource’s comments easily:</p>
+
+<pre>&lt;%= comments_for @post %&gt;</pre>
+
+<p>This will render the comments and a form for new comment submissions.
+Alternatively you can render just the comments or just the form like this:</p>
+
+<pre>&lt;%= render_comments @post %&gt;
+&lt;%= render_comments_form @post %&gt;</pre>
+
+<p>If you need to render the comments with a specific page or limit you can
+use Kaminari’s configurations like +paginates_per 10+ on your comment model
+or you can customize it for specific views on the helpers</p>
+
+<pre>&lt;%= render_comments @post, :page =&gt; params[:page], :limit =&gt; 5 %&gt;</pre>
+
+<p>This options can also be used on the <code>comments_for</code> helper.</p>
+
+<h2 id="label-Customization">Customization</h2>
+
+<h3 id="label-Views">Views</h3>
+
+<p>Of course you will want to customize how the comments are displayed or any
 other customization to the view. To generate the view files on your
-application, run:
-</p>
-<pre>
-  rails g opinio:views
+application, run:</p>
+
+<pre>rails g opinio:views</pre>
+
+<p>And you can customize all the views used by the engine.</p>
+
+<h3 id="label-Behaviour">Behaviour</h3>
+
+<h4 id="label-Opinio+Model"><a href="Opinio.html">Opinio</a> Model</h4>
+
+<p>You can customize the opinio model to suit your needs. The basic
+customization is the owner class name. It defaults to <code>User</code> but
+you can change that in the initializer or in the model by passing the
++:owner_class_name =&gt; “MyOwnerClass”+ option to the
+<code>opinio_model</code> method call.</p>
+
+<p>Another customization you can do is set the <code>counter_cache</code> to
+true in the commentable model. You can use the <code>:counter_cache</code>
+option for that.</p>
+
+<p>The other two customizations are only made through the initializer, and
+they are the <code>accept_replies</code> which defaults to true and
+<code>strip_html_tags_on_save</code> which also defaults to true.</p>
+
+<p>Validations on the opinio model are very basic, just ensuring it has a
+body, a commentable and an owner, if you want any other kind of validation,
+like the minimum size of a comment, you can use the regular AR validations
+as you wish.</p>
+
+<p>Remember that if you use titles, you need to add that to your comments
+table, since the generator doesn’t add it by default.</p>
+
+<h4 id="label-Opinio+Subjectum"><a href="Opinio.html">Opinio</a> Subjectum</h4>
+
+<p>To change how the models that actually have the comments, you can customize
+them with any option you would use to a regular <code>has_many</code>
+relationship in ActiveRecord.</p>
+
+<p>The default options are these:</p>
+
+<pre class="ruby"><span class="ruby-identifier">has_many</span> :<span class="ruby-identifier">comments</span>,
+         :<span class="ruby-identifier">class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Opinio</span>.<span class="ruby-identifier">model_name</span>,
+         :<span class="ruby-identifier">as</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">commentable</span>,
+         :<span class="ruby-identifier">order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;created_at #{Opinio.sort_order}&quot;</span>),
+         :<span class="ruby-identifier">dependent</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">destroy</span>
 </pre>
-<p>
-And you can customize all the views used by the engine.
-</p>
-<h3>Behaviour</h3>
-<h4>Pretty Urls</h4>
-<p>
-Often times you will want the engine to show the index of comments for a
-specific item without having to pass `:commentable_type` or
-`:commentable_id`.
-</p>
-<p>
-In order to do that, opinio provides a method to `ActionController::Base`:
-</p>
-<pre>
-  opinio_identifier do |params|
-    return Review.find(params[:review_id]) if params[:review_id]
-    return Product.find(params[:product_id]) if params[:product_id]
-  end
+
+<p>The <code>sort_order</code> and <code>model_name</code> are both setup in
+the initializer. Here you can do things like, let’s say you have moderation
+in your comments, you can only show the approved comments:</p>
+
+<pre class="ruby"><span class="ruby-identifier">opinio_subjectum</span> :<span class="ruby-identifier">conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;approved = ?&quot;</span>, <span class="ruby-keyword">true</span>]
 </pre>
-<p>
-Basically on this method you receive the `params` variable and you tell the
-engine, who owns the comments from that page. This allows you to use routes
-like:
-</p>
-<pre>
-  /products/1/comments
-  /products/1/reviews/1/comments
+
+<p>Remember you can override any of these options (except <code>as</code>) by
+passing them to the <code>opinio_subjectum</code> method.</p>
+
+<h4 id="label-Pretty+Urls">Pretty Urls</h4>
+
+<p>Often times you will want the engine to show the index of comments for a
+specific item without having to pass the <strong>:commentable_type</strong>
+or <strong>:commentable_id</strong> parameters.</p>
+
+<p>In order to do that, opinio provides a method to *ActionController::Base*:</p>
+
+<pre class="ruby"><span class="ruby-identifier">opinio_identifier</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">params</span><span class="ruby-operator">|</span>
+  <span class="ruby-keyword">next</span> <span class="ruby-constant">Review</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">review_id</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">review_id</span>]
+  <span class="ruby-keyword">next</span> <span class="ruby-constant">Product</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">product_id</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">product_id</span>]
+<span class="ruby-keyword">end</span>
 </pre>
-<p>
-Without passing those 2 parameters. I suggest you put this method on the
-`ApplicationController`
-</p>
-<h4>Customize destroy conditions</h4>
-<p>
-By default, anyone can destroy any comment in the engine. We don&#8217;t
-want that. To setup a custom destroy condition we can use the methods
+
+<p>Note: you use next instead of return because it is a proc that will be
+executed later on, and you cannot return on procs</p>
+
+<p>Basically on this method you receive the <strong>params</strong> variable
+and you tell the engine, who owns the comments from that page. This allows
+you to use routes like:</p>
+
+<pre>/products/1/comments
+/products/1/reviews/1/comments</pre>
+
+<p>Without passing those 2 parameters. I suggest you put this method on the
+<strong>ApplicationController</strong></p>
+
+<h4 id="label-Customize+destroy+conditions">Customize destroy conditions</h4>
+
+<p>By default, noone can destroy a comment in the engine. You have to tell the
+engine who can do it. To setup a custom destroy condition use the methods
 provided by opinio in our controllers. For instance, if our opinio model is
-called &#8216;comment&#8217;  it would be like this:
-</p>
-<pre>
-  comment_destroy_conditions do |comment|
-    comment.owner == current_user
-  end
-</pre>
-<p>
-This would make users only be able to remove their own comments. Another
-example would be using the `CanCan`:
-</p>
-<pre>
-  comment_destroy_conditions do |comment|
-    authorize :destroy, comment
-  end
-</pre>
-<p>
-You get the picture, you&#8217;re inside your controller&#8217;s methods on
-that block so you can call anything your normal controllers call on
-actions.
-</p>
-<h2>Contribution</h2>
-<p>
-If you want to help in any way with <b>Opinio</b> please message me or fork
-the project, make the changes and send me a pull request. For issues please
-use the github <a href="https://github.com/Draiken/opinio/issues">issues
-tracker</a>
-</p>
-<p>
-Remember this engine is still in development :)
-</p>
-<h3>TODO</h3>
-<pre>
-  * Haml views
-  * Better controller overriding (coding and documentation)
-  * Support for deeper levels of replies
-  * Add tons of rspecs for
-    * controllers
-    * routes
-    * models</pre>
+called ‘comment’  it could be written like this:</p>
 
-	</div>
+<pre class="ruby"><span class="ruby-identifier">comment_destroy_conditions</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">owner</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">current_user</span>
+<span class="ruby-keyword">end</span>
+</pre>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-</body>
-</html>
+<p>This would make users only be able to remove their own comments. Another
+example would be using the <strong>CanCan</strong>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">comment_destroy_conditions</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">comment</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">authorize</span> :<span class="ruby-identifier">destroy</span>, <span class="ruby-identifier">comment</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>You get the picture, you’re inside your controller’s methods on that block
+so you can call anything your normal controllers call on actions.</p>
+
+<h3 id="label-Testing">Testing</h3>
+
+<p><a href="Opinio.html">Opinio</a> provides a few shared examples for testing
+of your model with rspec On your opinio model test case you can require
+opinio's shared examples and use them</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'opinio/shared_examples'</span>
+
+<span class="ruby-identifier">describe</span> <span class="ruby-constant">Comment</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">it_should_behave_like</span> :<span class="ruby-identifier">opinio</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">describe</span> <span class="ruby-constant">Post</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">it_should_behave_like</span> :<span class="ruby-identifier">opinio_subjectum</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h2 id="label-Contribution">Contribution</h2>
+
+<p>If you want to help in any way with <strong><a
+href="Opinio.html">Opinio</a></strong> please message me or fork the
+project, make the changes and send me a pull request. For issues please use
+the github <a href="https://github.com/Draiken/opinio/issues">issues
+tracker</a></p>
+
+<h3 id="label-TODO">TODO</h3>
+
+<pre>* Refactor the +comments_for+ helper
+* Extract documentation to wiki
+* Add mongoid support</pre>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 
