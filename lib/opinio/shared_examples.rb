@@ -20,13 +20,13 @@ shared_examples_for :opinio do
     c = Comment.new(:body => "The Comment !")
     c.commentable = @post
     c.owner_id = 1
-    c.save
+    c.save.should == true
 
     c2 = Comment.new(:body => "The Comment !")
-    c2.commentable = @post
     c2.owner_id = 1
     c2.commentable = c
     c2.save.should == true
+    puts c2.errors.inspect
 
     c3 = c2.dup
     c3.commentable = c2
