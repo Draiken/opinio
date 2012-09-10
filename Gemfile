@@ -8,7 +8,7 @@ gem "sqlite3"
 gem "jquery-rails"
 
 group :development do
-  gem "ruby-debug19" if RUBY_VERSION == '1.9.2'
+  gem "debugger"
   gem 'guard-rspec'
   if RUBY_PLATFORM =~ /darwin/i
     gem 'rb-fsevent'
