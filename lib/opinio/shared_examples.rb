@@ -24,13 +24,11 @@ shared_examples_for :opinio do
     c.commentable = @post
     c.owner = owner
     c.save.should == true
-    puts c.errors.inspect
 
     c2 = Comment.new(:body => "The Comment !")
     c2.owner = owner
     c2.commentable = c
     c2.save.should == true
-    puts c2.errors.inspect
 
     c3 = c2.dup
     c3.commentable = c2
