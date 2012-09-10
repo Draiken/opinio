@@ -1,5 +1,8 @@
 shared_examples_for :opinio do
+
   let(:comment) { Comment.new }
+  let(:owner) { User.create }
+
   before(:all) do
     @post = Post.new(:title => "My first post", :body => "Damn I really suck at writing")
     @post.save
@@ -19,11 +22,12 @@ shared_examples_for :opinio do
 
     c = Comment.new(:body => "The Comment !")
     c.commentable = @post
-    c.owner_id = 1
+    c.owner = owner
     c.save.should == true
+    puts c.errors.inspect
 
     c2 = Comment.new(:body => "The Comment !")
-    c2.owner_id = 1
+    c2.owner = owner
     c2.commentable = c
     c2.save.should == true
     puts c2.errors.inspect
