@@ -22,9 +22,11 @@ shared_examples_for :opinio do
     c.owner_id = 1
     c.save
 
-    c2 = c.dup
+    c2 = Comment.new(:body => "The Comment !")
+    c2.commentable = @post
+    c2.owner_id = 1
     c2.commentable = c
-    c.save.should == true
+    c2.save.should == true
 
     c3 = c2.dup
     c3.commentable = c2

@@ -65,7 +65,6 @@ module Opinio
 
       # Validates that you cannot comment on a comment's comment
       def cannot_be_comment_of_a_comments_comment
-        debugger
         if new_record? && self.commentable_type == Opinio.model_name
           if commentable.commentable_type == Opinio.model_name
             errors.add :base, I18n.t('opinio.messages.cannot_be_comment_of_comment')
