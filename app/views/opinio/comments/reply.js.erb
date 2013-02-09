@@ -1,4 +1,6 @@
+<% @comment = Comment.find(@commentable_id) %>
 $("#commentable_id").val('<%= @commentable_id %>');
 $("#commentable_type").val('<%= @commentable_type %>');
 $("#new_comment textarea").val('');
+$("#new_comment h3.addcomment").text('Replying to <%= @comment.owner.name.titlecase %>');
 $("#new_comment textarea").focus();
