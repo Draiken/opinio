@@ -18,6 +18,8 @@ Make sure Bootstrap is in your Rails *Gemfile*:
     
 The remainder of this page is [Opinio](https://github.com/Draiken/opinio)'s original README.
 
+##
+
 **IMPORTANT** Version 0.6 might break some behaviour from 0.5 and lower versions, please refer to the [changelog](https://github.com/Draiken/opinio/blob/master/CHANGELOG.rdoc)
 
 ## Description ##
