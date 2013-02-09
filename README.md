@@ -8,7 +8,13 @@ It intends to utilize [Twitter Bootstrap](http://twitter.github.com/bootstrap/) 
 
 In particular, it utilizes the media-object component.  
 
-Currently it requires an image_url(:thumb) method (the default for Carrierwave, etc) for your User object; If you are set up with Devise + Bootstrap and are storing an image on the User, styling will include the User's avatar along with a link to the user, along with the comment and associated links.  
+Currently it requires an image_url(:thumb) method (the default for [Carrierwave](https://github.com/jnicklas/carrierwave)) for your User object; If you are set up with Devise + Bootstrap and are storing an image on the User, styling will include the User's avatar along with a link to the user, along with the comment and associated links.  
+
+That's
+
+    @user.image_url(:thumb).to_s
+    
+for the avatar image (media object).
 
 To do: make dynamic the method by which User's image is called; provide a default stock placeholder image for those not utilizing an image mounting system for their User object (e.g. Carrierwave/Paperclip).
 
