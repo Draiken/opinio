@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0.2 (beta1)
+
+* Updated form views to use Twitter Bootstrap 2 styling (media object)
+* Calls for User.image\_url(:thumb).to\_s for user avatar.
+* Reply jquery now changes reply title to give visual indicator that user is replying
+* Extra code to hide reply and delete buttons when necessary (eg non-owner)
+
 ## 0.6
 
 * Added two new methods for easy customization of the controller's flow: `opinio_after_create_path` and `opinio_after_destroy_path`
