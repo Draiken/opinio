@@ -1,12 +1,14 @@
 <div id="new_comment">
   <% if send(Opinio.current_user_method) %>
-    <h3><%= t('opinio.messages.add_comment') %></h3>
+    <h3 class="addcomment"><%= t('opinio.messages.add_comment') %></h3>
     <%= form_for Comment.new, :remote => false do |f| %>
       <p>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, :placeholder => "Enter comment...", rows:"10" %>
       </p>
       <%= hidden_field_tag :commentable_id, commentable.id %>
       <%= hidden_field_tag :commentable_type, commentable.class.base_class.name.to_s %>
+        <%= hidden_field_tag :original_controller, params[:controller] %>
+        <%= hidden_field_tag :original_id, params[:id] %>
       <%= f.submit t('opinio.actions.add') %>
     <% end %>
   <% else %>

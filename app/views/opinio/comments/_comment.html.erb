@@ -1,15 +1,20 @@
 <% reply = defined?(reply) ? reply : false %>
-<li id="comment_<%= comment.id %>">
-  <span>User: <%= comment.owner.id %></span>
-  <p>
+<div id="comment_<%= comment.id %>" class="media">
+<a class="pull-left" href="<%= user_path(comment.owner) %>">
+  <img class="media-object" src="<%= comment.owner.image_url(:thumb).to_s %>" />
+  <span><%= comment.owner.name.titlecase %></span>
+  </a>
+  <div class="media-body">
     <%= simple_format(comment.body) %>
-  </p>
+  <% if comment.owner == current_user %>
   <%= link_to t('opinio.actions.delete'), comment_path(comment), :method => :delete, :remote => true %>
-  <%# this enables only 1 level of replies %>
-  <% if Opinio.accept_replies && !reply %>
-    <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
-    <ul id="comment_<%= comment.id %>_replies" class="replies">
-      <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
-    </ul>
   <% end %>
-</li>
+  <%# this enables only 1 level of replies %>
+  <% if Opinio.accept_replies && !reply && !(comment.owner == current_user) %>
+    <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
+  <% end %>
+  <div id="comment_<%= comment.id %>_replies" class="replies media">
+    <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
+  </div>
+  </div>
+</div>
