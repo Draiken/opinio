@@ -1,5 +1,22 @@
-# Opinio #
-[![Travis-CI](https://secure.travis-ci.org/Draiken/opinio.png?branch=master)](https://travis-ci.org/Draiken/opinio) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/Draiken/opinio)
+# Opinio-Bootstrap #
+
+## Description ##
+
+This is a fork of Luiz Pereira's great [Opinio](https://github.com/Draiken/opinio) gem for Rails 3+.
+
+It intends to utilize [Twitter Bootstrap](http://twitter.github.com/bootstrap/) styling out-of-the-box.
+
+In particular, it utilizes the media-object component.  
+
+Currently it requires an image_url(:thumb) method (the default for Carrierwave, etc) for your User object; If you are set up with Devise + Bootstrap and are storing an image on the User, styling will include the User's avatar along with a link to the user, along with the comment and associated links.  
+
+To do: make dynamic the method by which User's image is called; provide a default stock placeholder image for those not utilizing an image mounting system for their User object (e.g. Carrierwave/Paperclip).
+
+Make sure Bootstrap is in your Rails *Gemfile*:
+
+    gem "bootstrap-sass", ">= 2.2.2.0"
+    
+The remainder of this page is [Opinio](https://github.com/Draiken/opinio)'s original README.
 
 **IMPORTANT** Version 0.6 might break some behaviour from 0.5 and lower versions, please refer to the [changelog](https://github.com/Draiken/opinio/blob/master/CHANGELOG.rdoc)
 
