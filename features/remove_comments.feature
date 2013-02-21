@@ -9,3 +9,8 @@ Feature: Remove comments
     When I remove that comment
     Then I should see a message confirming I removed it
     And I should not see my comment
+
+  Scenario: Remove someone else's comment
+    Given someone else have sent a comment
+    When I see the comment
+    Then I should not be able to delete it

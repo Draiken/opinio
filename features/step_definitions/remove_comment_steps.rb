@@ -31,3 +31,22 @@ end
 Then /^I should not see my comment$/ do
   page.should_not have_content(@comment.body)
 end
+
+Given /^someone else have sent a comment$/ do
+  post = Post.create :title => "The post", :body => "The body of the post!"
+  user = User.create :name => "Mr. User"
+  logged_user = User.create :name => "Myself"
+  visit(set_current_user_path(logged_user))
+  @comment = Comment.new :body => "I love to comment"
+  @comment.owner = user
+  @comment.commentable = post
+  @comment.save
+end
+
+When /^I see the comment$/ do
+  visit(post_path(@comment.commentable))
+end
+
+Then /^I should not be able to delete it$/ do
+  page.should have_no_content("Deletar")
+end
