@@ -9,7 +9,9 @@
   <% end %>
   <%# this enables only 1 level of replies %>
   <% if Opinio.accept_replies && !reply %>
-    <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
+    <% if send(Opinio.current_user_method) %>
+      <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
+    <% end %>
     <ul id="comment_<%= comment.id %>_replies" class="replies">
       <%= render :partial => "opinio/comments/comment", :collection => comment.comments, :locals => {:reply => true} %>
     </ul>
