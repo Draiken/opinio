@@ -1,6 +1,6 @@
 #reply_template.reply_template{style: 'display:none;'}
   = form_for Comment.new, :remote => false do |f|
-    %p= f.text_area :body
+    = f.text_area :body, class: :reply_body
     = hidden_field_tag :commentable_id, nil
     = hidden_field_tag :commentable_type, nil
-    = f.submit t('opinio.actions.add_reply')
+    = f.submit t('opinio.actions.add_reply'), disabled: :disabled

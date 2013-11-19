@@ -14,3 +14,11 @@ $ ->
     $(this).hide()
     false
 
+  $(document).on 'keyup', '.comment_body, .reply_body',(e) ->
+    disabled = true
+    if $(this).val() != ''
+      disabled = false
+    if disabled
+      $(this).siblings('input[type=submit]').attr('disabled', 'disabled');
+    else
+      $(this).siblings('input[type=submit]').removeAttr('disabled');
