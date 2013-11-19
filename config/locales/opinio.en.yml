@@ -4,6 +4,7 @@ en:
       delete: 'Delete'
       reply: 'Reply'
       add: 'Add comment'
+      add_reply: 'Add reply'
     messages:
       no_comments_found: 'No comments found'
       must_be_logged_in_to_comment: 'Must be logged in to comment.'

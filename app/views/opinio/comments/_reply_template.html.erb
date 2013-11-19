@@ -1,0 +1,8 @@
+<div id="reply_template" class='reply_template' style='display:none;'>
+  <%= form_for Comment.new, :remote => false do |f| %>
+    <p><%= f.text_area :body %></p>
+    <%= hidden_field_tag :commentable_id, nil %>
+    <%= hidden_field_tag :commentable_type, nil %>
+    <%= f.submit t('opinio.actions.add_reply') %>
+  <% end %>
+</div>
