@@ -2,7 +2,8 @@ module Opinio
   module Controllers
     module Helpers
 
-      def comments_for(object, options = {})        
+      def comments_for(object, options = {})
+        render_reply_templates +
         render_comments(object, options) +
         ( render_comments_form(object, options) unless options[:no_new] ).to_s
       end
@@ -16,7 +17,12 @@ module Opinio
       def render_comments_form(object, options = {})
         render( :partial => "opinio/comments/new", :locals => {:commentable => object, :options => options} )
       end
+
+      def render_reply_templates
+        return unless Opinio.accept_replies
+        render :partial => "opinio/comments/reply_template"
+      end
     end
-    
+
   end
 end
