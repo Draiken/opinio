@@ -3,6 +3,7 @@ module Opinio
 
   module Controllers
     require 'opinio/controllers/helpers'
+    require 'opinio/controllers/current_commenter'
     require 'opinio/controllers/internal_helpers'
     require 'opinio/controllers/replies'
   end

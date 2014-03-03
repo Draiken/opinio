@@ -1,5 +1,5 @@
 #new_comment
-  - if send(Opinio.current_user_method)
+  - if current_commenter
     %h3= t('opinio.messages.add_comment')
     = form_for Comment.new, :remote => false do |f|
       %p= f.text_area :body

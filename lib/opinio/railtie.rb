@@ -16,6 +16,7 @@ module Opinio
       ActiveSupport.on_load(:action_controller) do
         require File.join(File.dirname(__FILE__), 'controllers', 'extensions')
         ::ActionController::Base.send :include,   Opinio::Controllers::Extensions
+        ::ActionController::Base.send :include, Opinio::Controllers::CurrentCommenter
       end
     end
   end
