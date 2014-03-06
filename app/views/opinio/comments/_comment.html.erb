@@ -4,12 +4,12 @@
   <p>
     <%= simple_format(comment.body) %>
   </p>
-  <% if comment.owner == send(Opinio.current_user_method) %>
+  <% if comment.owner == current_commenter %>
     <%= link_to t('opinio.actions.delete'), comment_path(comment), :method => :delete, :remote => true %>
   <% end %>
   <%# this enables only 1 level of replies %>
   <% if Opinio.accept_replies && !reply %>
-    <% if send(Opinio.current_user_method) %>
+    <% if current_commenter %>
       <span><%= link_to t('opinio.actions.reply'), reply_comment_path(comment), :remote => true %></span>
     <% end %>
     <ul id="comment_<%= comment.id %>_replies" class="replies">

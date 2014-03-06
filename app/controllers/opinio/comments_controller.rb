@@ -8,7 +8,7 @@ class Opinio::CommentsController < ApplicationController
 
   def create
     @comment = resource.comments.build(params[:comment])
-    @comment.owner = send(Opinio.current_user_method)
+    @comment.owner = current_commenter
     if @comment.save
       flash_area = :notice
       message = t('opinio.messages.comment_sent')
@@ -34,7 +34,7 @@ class Opinio::CommentsController < ApplicationController
       set_flash(:notice, t('opinio.messages.comment_destroyed'))
     else
       #flash[:error]  = I18n.translate('opinio.comment.not_permitted', :default => "Not permitted")
-      logger.warn "user #{send(Opinio.current_user_method)} tried to remove a comment from another user #{@comment.owner.id}"
+      logger.warn "user #{current_commenter} tried to remove a comment from another user #{@comment.owner.id}"
       render :text => "unauthorized", :status => 401 and return
     end
 
@@ -43,5 +43,4 @@ class Opinio::CommentsController < ApplicationController
       format.html { redirect_to( opinio_after_destroy_path(@comment) ) }
     end
   end
-  
 end
