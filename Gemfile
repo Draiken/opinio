@@ -3,9 +3,10 @@ source "http://rubygems.org"
 gemspec
 
 gem "kaminari"
-gem "rails", "~> 3.0.0"
+gem "rails", "4.0.0"
 gem "sqlite3"
 gem "jquery-rails"
+gem "protected_attributes"
 
 group :development do
   platforms :mri_19 do
