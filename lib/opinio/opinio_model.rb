@@ -15,11 +15,6 @@ module Opinio
         return if self.included_modules.include?(Opinio::OpinioModel::Validations)
         options = args.extract_options!
 
-        if Opinio.use_title
-          attr_accessible :title 
-        end
-        attr_accessible :body
-
         belongs_to :commentable, :polymorphic => true, :counter_cache => options.fetch(:counter_cache, false) 
         belongs_to :owner, :class_name => options.fetch(:owner_class_name, Opinio.owner_class_name)
 

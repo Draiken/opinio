@@ -7,7 +7,7 @@ class Opinio::CommentsController < ApplicationController
   end
 
   def create
-    @comment = resource.comments.build(params[:comment])
+    @comment = resource.comments.build(comments_params)
     @comment.owner = current_commenter
     if @comment.save
       flash_area = :notice
@@ -42,5 +42,10 @@ class Opinio::CommentsController < ApplicationController
       format.js
       format.html { redirect_to( opinio_after_destroy_path(@comment) ) }
     end
+  end
+
+  private
+  def comments_params
+    params.require(:comment).permit(:body, :id, (:title if Opinio.use_title))
   end
 end
