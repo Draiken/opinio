@@ -12,10 +12,9 @@ module Opinio
 
         default_options = { :class_name => Opinio.model_name,
                             :as => :commentable,
-                            :order => "created_at #{Opinio.sort_order}",
                             :dependent => :destroy }
 
-        has_many :comments, default_options.merge(options)
+        has_many :comments, default_options.merge(options), -> { order "created_at #{Opinio.sort_order}" }
 
       end
     end

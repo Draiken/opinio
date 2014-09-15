@@ -12,6 +12,7 @@ module Opinio
       end
 
       def resource_by_params
+        params.require(:comment).permit(:body, :id, (:title if Opinio.use_title))
         if params[:commentable_type]
           params[:commentable_type].constantize.find(params[:commentable_id])
         elsif params[:comment]
