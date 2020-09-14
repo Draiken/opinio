@@ -1,7 +1,10 @@
 # Opinio #
 [![Travis-CI](https://secure.travis-ci.org/Draiken/opinio.png?branch=master)](https://travis-ci.org/Draiken/opinio) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/Draiken/opinio)
 
-**IMPORTANT** Version 0.6 might break some behaviour from 0.5 and lower versions, please refer to the [changelog](https://github.com/Draiken/opinio/blob/master/CHANGELOG.rdoc)
+
+**This project is no longer maintained. Please refrain from using this gem as it's probably not going to work as expected on modern Rails applications**
+
+
 
 ## Description ##
 
